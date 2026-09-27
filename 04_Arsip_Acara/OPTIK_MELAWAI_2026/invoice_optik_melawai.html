@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice BEM FEB UKRIDA - PT Optik Melawai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- html2pdf.js library for direct 1-click clean PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-bg: #f1f5f9;
+            --page-bg: #ffffff;
+            --text-main: #111827;
+            --table-head-bg: #F5D5D3; /* Peach salmon tone matching sample */
+            --table-border: #000000;
+            --accent: #2563eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 12mm 15mm 12mm 15mm;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.35;
+        }
+
+        /* Toolbar / Actions */
+        .toolbar {
+            width: 100%;
+            max-width: 820px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #ffffff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .toolbar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .toolbar-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toolbar-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            appearance: none;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-success {
+            background-color: #059669;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+        }
+
+        .btn-success:hover {
+            background-color: #047857;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+        }
+
+        .print-tip {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            line-height: 1.45;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .print-tip strong {
+            color: #1d4ed8;
+        }
+
+        .badge-edit {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* Paper sheet (A4 representation) */
+        .invoice-paper {
+            width: 100%;
+            max-width: 820px;
+            background: var(--page-bg);
+            padding: 38px 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #111;
+        }
+
+        /* Kop Surat Section (Dual Logo: UKRIDA & BEM FEB) */
+        .kop-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 6px;
+        }
+
+        .kop-logo {
+            height: 92px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .kop-details {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .kop-univ {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            font-size: 20.5px;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 0.5px;
+            line-height: 1.25;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+
+        .kop-instansi {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 0.3px;
+            line-height: 1.25;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+
+        .kop-alamat {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            font-size: 11px;
+            color: #000;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        /* Double border Kop Surat (Always prints, never stripped) */
+        .kop-divider {
+            width: 100%;
+            height: 0;
+            border-top: 1px solid #000000;
+            border-bottom: 2.5px solid #000000;
+            padding-top: 2px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+        }
+
+        /* Title and Meta */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .invoice-title {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #000;
+        }
+
+        .invoice-meta {
+            text-align: right;
+            font-size: 12px;
+            color: #333;
+            line-height: 1.45;
+        }
+
+        .invoice-meta strong {
+            color: #000;
+        }
+
+        /* Recipient Box */
+        .recipient-box {
+            margin-bottom: 14px;
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        .recipient-title {
+            font-weight: 700;
+            font-size: 12.5px;
+            color: #000;
+            margin-bottom: 3px;
+        }
+
+        .recipient-name {
+            font-weight: 600;
+            color: #111;
+        }
+
+        .recipient-address {
+            color: #222;
+        }
+
+        .activity-note {
+            font-size: 11.5px;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 12px;
+        }
+
+        /* Table */
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .invoice-table th,
+        .invoice-table td {
+            border: 1px solid var(--table-border);
+            padding: 6.5px 9px;
+            vertical-align: middle;
+        }
+
+        .invoice-table th {
+            background-color: #F5D5D3 !important;
+            font-weight: 700;
+            text-align: center;
+            color: #000 !important;
+            font-size: 12.5px;
+            padding: 7.5px 8px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .invoice-table th.col-ket {
+            width: 42%;
+        }
+
+        .invoice-table th.col-harga {
+            width: 17%;
+        }
+
+        .invoice-table th.col-tgl {
+            width: 18%;
+        }
+
+        .invoice-table th.col-jml {
+            width: 8%;
+        }
+
+        .invoice-table th.col-total {
+            width: 15%;
+        }
+
+        .category-row td {
+            font-weight: 700;
+            background-color: #fafafa !important;
+            color: #111;
+            padding-left: 10px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .item-row td.item-name {
+            padding-left: 14px;
+            font-weight: 500;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .total-row td {
+            font-weight: 700;
+            font-size: 12.5px;
+            background-color: #ffffff !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .total-label {
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .terbilang-box {
+            font-size: 11.5px;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        /* Payment Info */
+        .payment-box {
+            margin-bottom: 22px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .payment-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #000;
+        }
+
+        .payment-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .payment-row .label {
+            width: 130px;
+            color: #333;
+        }
+
+        .payment-row .val {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Signatures */
+        .signatures-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 28px;
+            padding: 0 16px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .sig-block {
+            width: 44%;
+            text-align: center;
+        }
+
+        .sig-header {
+            margin-bottom: 72px;
+            color: #111;
+        }
+
+        .sig-name {
+            font-weight: 700;
+            border-top: 1px solid #111;
+            display: inline-block;
+            min-width: 210px;
+            padding-top: 4px;
+            color: #000;
+        }
+
+        .sig-role {
+            color: #333;
+            font-size: 11.5px;
+            margin-top: 2px;
+        }
+
+        /* Editable highlight */
+        [contenteditable="true"]:hover {
+            outline: 1px dashed #3b82f6;
+            background-color: #f0f9ff;
+            cursor: text;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 2px solid #2563eb;
+            background-color: #ffffff;
+        }
+
+        /* Print styles */
+        @media print {
+            html, body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+
+            .toolbar {
+                display: none !important;
+            }
+
+            .invoice-paper {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                min-height: auto !important;
+            }
+
+            .kop-divider {
+                border-top: 1px solid #000000 !important;
+                border-bottom: 2.5px solid #000000 !important;
+                height: 0 !important;
+                padding-top: 2px !important;
+                margin-top: 8px !important;
+                margin-bottom: 16px !important;
+                display: block !important;
+            }
+
+            .invoice-table th {
+                background-color: #F5D5D3 !important;
+                color: #000000 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .category-row td {
+                background-color: #fafafa !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .total-row td {
+                background-color: #ffffff !important;
+            }
+
+            .sig-name {
+                border-top: 1px solid #000000 !important;
+            }
+
+            [contenteditable="true"]:hover,
+            [contenteditable="true"]:focus {
+                outline: none !important;
+                background-color: transparent !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Controls / Toolbar (Hidden when printed) -->
+    <div class="toolbar">
+        <div class="toolbar-top">
+            <div class="toolbar-title">
+                <span>📄 <strong>Invoice BEM FEB UKRIDA &rarr; PT Optik Melawai</strong></span>
+                <span class="badge-edit" id="saveStatus">💾 Tersimpan Permanen</span>
+            </div>
+            <div class="toolbar-actions">
+                <button class="btn btn-success" id="btnDownloadPdf" onclick="downloadCleanPdf()">
+                    📥 Download PDF Bersih (1-Klik)
+                </button>
+                <button class="btn btn-primary" onclick="window.print()">
+                    🖨️ Cetak / Print Browser
+                </button>
+                <button class="btn btn-secondary" onclick="resetForm()">
+                    🔄 Reset ke Awal
+                </button>
+            </div>
+        </div>
+        <div class="print-tip">
+            <span>💡</span>
+            <div>
+                <strong>Tips Cetak via Browser (Ctrl + P):</strong> Di jendela cetak browser, aktifkan <strong>"Grafik latar belakang / Background graphics"</strong> agar warna peach tabel muncul, dan hilangkan centang <strong>"Header dan footer"</strong> agar link URL tidak tercetak di bawah halaman. Atau gunakan tombol hijau <strong>"Download PDF Bersih (1-Klik)"</strong> untuk hasil instan tanpa header/footer URL!
+            </div>
+        </div>
+    </div>
+
+    <!-- Printable A4 Paper -->
+    <div class="invoice-paper" id="invoicePaper">
+        <!-- Kop Surat Resmi (Format 2 Logo: UKRIDA & BEM FEB) -->
+        <div class="kop-container">
+            <img src="ukrida_logo_tight.png" alt="Logo UKRIDA" class="kop-logo">
+            <div class="kop-details">
+                <div class="kop-univ" contenteditable="true">UNIVERSITAS KRISTEN KRIDA WACANA</div>
+                <div class="kop-instansi" contenteditable="true">BADAN EKSEKUTIF MAHASISWA FAKULTAS EKONOMI &amp; BISNIS</div>
+                <div class="kop-alamat" contenteditable="true">Jl. Tanjung Duren Raya No.4 Telp. 5666952-189 Fax 5666956, Jakarta Barat 11470</div>
+            </div>
+            <img src="BEM_FEB_LOGO_tight.png" alt="Logo BEM FEB UKRIDA" class="kop-logo">
+        </div>
+        <div class="kop-divider"></div>
+
+        <!-- Header / Invoice Title & Meta -->
+        <div class="header-section">
+            <div>
+                <h1 class="invoice-title" contenteditable="true">INVOICE</h1>
+            </div>
+            <div class="invoice-meta">
+                <div>No. Invoice: <strong contenteditable="true">INV/BEM-FEB/OM/IX/2026</strong></div>
+                <div>Tanggal: <strong contenteditable="true">08 September 2026</strong></div>
+                <div>Hal: <span contenteditable="true">Sumbangan Kegiatan</span></div>
+            </div>
+        </div>
+
+        <!-- Recipient Information (Matches IMG-20260904-WA0021.jpg) -->
+        <div class="recipient-box">
+            <div class="recipient-title" contenteditable="true">DITUJUKAN KEPADA:</div>
+            <div class="recipient-name" contenteditable="true">PT. Inti Citra Agung (Optik Melawai)</div>
+            <div class="recipient-address" contenteditable="true">
+                Jl. KS Tubun Raya No. 64<br>
+                RT 001 RW 001<br>
+                Slipi Palmerah<br>
+                Jakarta Barat 11410
+            </div>
+        </div>
+
+        <div class="activity-note" contenteditable="true">
+            Kegiatan: BEM FEB X Optik Melawai 2026 &mdash; Fakultas Ekonomi dan Bisnis UKRIDA (RPK Periode 2026/2027)
+        </div>
+
+        <!-- Main Invoice Table -->
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th class="col-ket">Keterangan</th>
+                    <th class="col-harga">Harga</th>
+                    <th class="col-tgl">Hari/Tanggal</th>
+                    <th class="col-jml">Jumlah</th>
+                    <th class="col-total">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="item-row">
+                    <td class="item-name" contenteditable="true">Sumbangan</td>
+                    <td class="text-right" contenteditable="true">Rp3.000.000,00</td>
+                    <td class="text-center" contenteditable="true">
+                        10-11,<br>September 2026
+                    </td>
+                    <td class="text-center" contenteditable="true">1</td>
+                    <td class="text-right" contenteditable="true">Rp3.000.000,00</td>
+                </tr>
+
+                <!-- Total Row -->
+                <tr class="total-row">
+                    <td colspan="4" class="total-label" contenteditable="true">Total</td>
+                    <td class="text-right" contenteditable="true"><strong>Rp3.000.000,00</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Terbilang -->
+        <div class="terbilang-box" contenteditable="true">
+            Terbilang: <strong>Tiga Juta Rupiah</strong>
+        </div>
+
+        <!-- Payment Details (Filled with real verified recipient details) -->
+        <div class="payment-box">
+            <div class="payment-title" contenteditable="true">Pembayaran:</div>
+            <div class="payment-row">
+                <span class="label">Nama Rekening:</span>
+                <span class="val" contenteditable="true">JEMIMA PUTRI SUTANTA</span>
+            </div>
+            <div class="payment-row">
+                <span class="label">Nomor Rekening:</span>
+                <span class="val" contenteditable="true">8400364932</span>
+            </div>
+            <div class="payment-row">
+                <span class="label">Bank:</span>
+                <span class="val" contenteditable="true">BCA</span>
+            </div>
+        </div>
+
+        <!-- Signatures / Pengesahan (Filled with real names and NIMs) -->
+        <div class="signatures-container">
+            <div class="sig-block">
+                <div class="sig-header" contenteditable="true">
+                    Hormat kami,<br>
+                    <strong>Ketua BEM FEB UKRIDA</strong>
+                </div>
+                <div class="sig-name" contenteditable="true">(Arthur Reezan)</div>
+                <div class="sig-role" contenteditable="true">NIM: 312023002</div>
+            </div>
+
+            <div class="sig-block">
+                <div class="sig-header" contenteditable="true">
+                    Mengetahui,<br>
+                    <strong>Bendahara BEM FEB UKRIDA</strong>
+                </div>
+                <div class="sig-name" contenteditable="true">(Jemima Putri Sutanta)</div>
+                <div class="sig-role" contenteditable="true">NIM: 322024034</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'bem_feb_invoice_optik_melawai_v2';
+        const invoicePaper = document.getElementById('invoicePaper');
+        const saveStatus = document.getElementById('saveStatus');
+
+        // Clean up legacy v1 cache if present
+        try {
+            localStorage.removeItem('bem_feb_invoice_optik_melawai_v1');
+        } catch(e) {}
+
+        // Restore saved content if present
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedHtml = localStorage.getItem(STORAGE_KEY);
+            if (savedHtml) {
+                invoicePaper.innerHTML = savedHtml;
+            }
+        });
+
+        // Autosave on any input/edit
+        let saveTimer = null;
+        invoicePaper.addEventListener('input', () => {
+            if (saveStatus) saveStatus.textContent = '⏳ Menyimpan...';
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(() => {
+                localStorage.setItem(STORAGE_KEY, invoicePaper.innerHTML);
+                if (saveStatus) saveStatus.textContent = '✅ Tersimpan Otomatis';
+                setTimeout(() => {
+                    if (saveStatus) saveStatus.textContent = '💾 Tersimpan Permanen';
+                }, 2000);
+            }, 500);
+        });
+
+        function resetForm() {
+            if (confirm('Apakah Anda yakin ingin mereset formulir ke data default awal?')) {
+                localStorage.removeItem(STORAGE_KEY);
+                window.location.reload();
+            }
+        }
+
+        function downloadCleanPdf() {
+            const btn = document.getElementById('btnDownloadPdf');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ Menyiapkan PDF...';
+            btn.disabled = true;
+
+            const element = document.getElementById('invoicePaper');
+            
+            // html2pdf options
+            const opt = {
+                margin:       [10, 14, 10, 14], // [top, left, bottom, right] in mm
+                filename:     'Invoice_BEM_FEB_Optik_Melawai.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            if (typeof html2pdf !== 'undefined') {
+                html2pdf().set(opt).from(element).save().then(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }).catch(err => {
+                    console.error('html2pdf error:', err);
+                    window.print();
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+            } else {
+                // Fallback to native print if CDN blocked
+                window.print();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

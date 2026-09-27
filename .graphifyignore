@@ -1,0 +1,25 @@
+# .graphifyignore — BEM FEB UKRIDA
+# File dan folder yang dikecualikan dari knowledge graph Graphify
+
+# Sistem
+.agents/
+graphify-out/
+execution/__pycache__/
+*.pyc
+*.pyo
+.env
+*.log
+
+# File biner (bukan teks)
+*.pdf
+*.docx
+*.xlsx
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Temporary
+*.tmp
+*.bak
+~$*
