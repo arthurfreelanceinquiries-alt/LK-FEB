@@ -45,6 +45,7 @@
 | PKKMB FEB 2026 | Proposal, Surat Undangan, SPU | Agt 2026 | `04_Arsip_Acara/PKKMB_2026/` |
 | LKMM Tingkat II 2026 | Proposal, LPJ | 2026 | `04_Arsip_Acara/LKMM_II_2026/` |
 | Seminar Optik Melawai | SPU, Invoice | 2026 | `04_Arsip_Acara/OPTIK_MELAWAI_2026/` |
+| OMGTC FEB UKRIDA 2026 | Proposal Resmi (.md & .docx), RAB, Audit Review | Sep 2026 | `01_Proposal/OMGTC_2026/` |
 
 ### 🟡 Sedang Berjalan
 | Acara | Dokumen | Status | Lokasi File |
@@ -176,6 +177,7 @@ Anggota [Sie]   : [Nama] ([NIM])
 | 28 Sep 2026 | Sesi 1 | Buat PRD + SOP tipografi, margin, typo checker | 4 file baru, script Python berfungsi |
 | 28 Sep 2026 | Sesi 1 | Konsolidasi struktur folder — arsipkan PKKMB, LKMM II, Optik Melawai | Semua dalam 1 folder besar, bersih |
 | 28 Sep 2026 | Sesi 1 | Inisialisasi Git, setup .gitignore, dan push ke GitHub (Private) | Repo private terunggah di GitHub |
+| 28 Sep 2026 | Sesi 2 | Analisis proposal vendor OMGTC, rancang PRD & Implementation Plan, drafting Proposal resmi UKRIDA, & Audit Lapis 1-2 | Analisis, PRD, Plan, Proposal final, RAB JSON, & Audit lolos 10/10 |
 
 ---
 
