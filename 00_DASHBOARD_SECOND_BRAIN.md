@@ -176,8 +176,8 @@ Anggota [Sie]   : [Nama] ([NIM])
 | 28 Sep 2026 | Sesi 1 | Setup sistem, analisis PKKMB 2026 | Sistem lengkap + analisis proposal |
 | 28 Sep 2026 | Sesi 1 | Buat PRD + SOP tipografi, margin, typo checker | 4 file baru, script Python berfungsi |
 | 28 Sep 2026 | Sesi 1 | Konsolidasi struktur folder — arsipkan PKKMB, LKMM II, Optik Melawai | Semua dalam 1 folder besar, bersih |
-| 28 Sep 2026 | Sesi 1 | Inisialisasi Git, setup .gitignore, dan push ke GitHub (Private) | Repo private terunggah di GitHub |
 | 28 Sep 2026 | Sesi 2 | Analisis proposal vendor OMGTC, rancang PRD & Implementation Plan, drafting Proposal resmi UKRIDA, & Audit Lapis 1-2 | Analisis, PRD, Plan, Proposal final, RAB JSON, & Audit lolos 10/10 |
+| 28 Sep 2026 | Sesi 2 | Ekspor Proposal OMGTC ke format Word (.docx) & Push ke GitHub | Proposal_OMGTC_FEB_UKRIDA_2026.docx & Sinkronisasi origin/main sukses |
 
 ---
 
