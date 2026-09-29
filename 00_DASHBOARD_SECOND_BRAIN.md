@@ -177,8 +177,8 @@ Anggota [Sie]   : [Nama] ([NIM])
 | 28 Sep 2026 | Sesi 1 | Buat PRD + SOP tipografi, margin, typo checker | 4 file baru, script Python berfungsi |
 | 28 Sep 2026 | Sesi 1 | Konsolidasi struktur folder — arsipkan PKKMB, LKMM II, Optik Melawai | Semua dalam 1 folder besar, bersih |
 | 28 Sep 2026 | Sesi 2 | Analisis proposal vendor OMGTC, rancang PRD & Implementation Plan, drafting Proposal resmi UKRIDA, & Audit Lapis 1-2 | Analisis, PRD, Plan, Proposal final, RAB JSON, & Audit lolos 10/10 |
-| 28 Sep 2026 | Sesi 2 | Ekspor Proposal OMGTC ke format Word (.docx) & Push ke GitHub | Proposal_OMGTC_FEB_UKRIDA_2026.docx & Sinkronisasi origin/main sukses |
-| 29 Sep 2026 | Sesi 3 | Analisis mendalam referensi `PROPOSAL LKMM TINGKAT II 2026 - Google Docs.pdf` & perombakan total `docx_generator.py` | Format 100% identik Google Docs: Margin 4-3-3-3, Cover 1 Logo HD BEM FEB, hapus kop berulang, kepanitiaan borderless, tabel border hitam & soft green #B3E4A1, TTD bold+underline |
+| 29 Sep 2026 | Sesi 3 | Analisis mendalam referensi `PROPOSAL LKMM TINGKAT II 2026 - Google Docs.pdf` & perombakan total `docx_generator.py` | Format 100% identik Google Docs: Margin 4-3-3-3, Cover 1 Logo HD BEM FEB, hapus kop berulang, TTD bold+underline |
+| 29 Sep 2026 | Sesi 3 | Revisi visual: ubah warna header tabel ke abu-abu netral (#E0E0E0) & presisi perataan NIM via tabel 4-kolom | Tabel anggaran & rundown seragam abu-abu elegan; NIM kepanitiaan 100% sejajar vertikal |
 
 ---
 
