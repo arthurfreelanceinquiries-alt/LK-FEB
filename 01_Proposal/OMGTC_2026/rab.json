@@ -1,90 +1,12 @@
 {
+  "tipe_anggaran": "swadana_vendor",
   "pemasukan": [
     {
-      "sumber": "Dana Kerjasama & Sponsorship PT. Inti Citra Agung (Optik Melawai)",
+      "sumber": "Dana Sponsorship PT. Inti Citra Agung (Optik Melawai)",
       "jumlah": 3000000
     }
   ],
-  "pengeluaran": {
-    "acara": [
-      {
-        "item": "Plakat Akrilik Penghargaan Narasumber",
-        "qty": 1,
-        "harga": 250000
-      },
-      {
-        "item": "Paket Cinderamata / Goodie Bag Pemateri & Mitra",
-        "qty": 2,
-        "harga": 150000
-      },
-      {
-        "item": "Cetak Sertifikat Kertas Linen & Map Panitia/Peserta",
-        "qty": 40,
-        "harga": 5000
-      }
-    ],
-    "konsumsi": [
-      {
-        "item": "Snack Box Narasumber & Tamu Khusus",
-        "qty": 10,
-        "harga": 25000
-      },
-      {
-        "item": "Makan Siang Panitia Pelaksana (2 Hari)",
-        "qty": 32,
-        "harga": 25000
-      }
-    ],
-    "pubdok": [
-      {
-        "item": "Cetak Backdrop Panggung Auditorium (Ukuran 4x2 m)",
-        "qty": 1,
-        "harga": 250000
-      },
-      {
-        "item": "Cetak Standing Banner / X-Banner Edukasi & Arah Booth",
-        "qty": 2,
-        "harga": 100000
-      },
-      {
-        "item": "Tali Lanyard & ID Card Panitia Pelaksana",
-        "qty": 20,
-        "harga": 2500
-      }
-    ],
-    "perlengkapan": [
-      {
-        "item": "Sewa Kabel Roll Heavy Duty (Daya Tinggi)",
-        "qty": 2,
-        "harga": 100000
-      },
-      {
-        "item": "Baterai Wireless Mic (Alkaline AA/9V)",
-        "qty": 4,
-        "harga": 25000
-      },
-      {
-        "item": "Lakban Hitam Kabel & Floor Marking Booth",
-        "qty": 3,
-        "harga": 25000
-      },
-      {
-        "item": "Trash Bag Besar & Sarung Tangan Kebersihan",
-        "qty": 3,
-        "harga": 25000
-      }
-    ],
-    "humas_p3k": [
-      {
-        "item": "Air Mineral Botol & Dus Meja Registrasi",
-        "qty": 3,
-        "harga": 50000
-      },
-      {
-        "item": "Kotak Obat P3K & Sanitizer Area Pemeriksaan",
-        "qty": 1,
-        "harga": 100000
-      }
-    ]
-  }
+  "pengeluaran": {},
+  "pengeluaran_bem": 0,
+  "keterangan": "Tidak ada rencana pengeluaran dari BEM FEB UKRIDA (Rp. 0). Seluruh biaya operasional, medis refraksi, dan sarana penunjang ditanggung penuh secara mandiri oleh vendor PT. Inti Citra Agung (Optik Melawai)."
 }

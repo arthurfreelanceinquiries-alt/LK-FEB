@@ -176,65 +176,21 @@ Susunan Panitia Pelaksana Kegiatan **Optik Melawai Goes To Campus (OMGTC) 2026**
 
 ---
 
-### B. RENCANA PENGELUARAN
+### B. KETERANGAN PENGELUARAN KEGIATAN
 
-#### 1. Divisi Acara
-| No | Uraian Kebutuhan | Rincian Kuantitas | Harga Satuan (Rp) | Subtotal (Rp) |
-| :-: | :--- | :---: | :---: | :---: |
-| 1 | Plakat Akrilik Penghargaan Narasumber | 1 buah | Rp. 250.000 | Rp. 250.000 |
-| 2 | Paket Cinderamata / *Goodie Bag* Pemateri & Mitra | 2 paket | Rp. 150.000 | Rp. 300.000 |
-| 3 | Cetak Sertifikat Kertas Linen & Map Panitia/Peserta | 40 lembar | Rp. 5.000 | Rp. 200.000 |
-| | **TOTAL DIVISI ACARA** | | | **Rp. 750.000** |
+Dalam penyelenggaraan kegiatan **Optik Melawai Goes To Campus (OMGTC) 2026** ini, tidak terdapat rencana pengeluaran dana yang dibebankan kepada kas Badan Eksekutif Mahasiswa Fakultas Ekonomi dan Bisnis (BEM FEB) UKRIDA maupun Fakultas Ekonomi dan Bisnis UKRIDA (**Total Pengeluaran BEM FEB: Rp. 0**).
 
-#### 2. Divisi Konsumsi
-| No | Uraian Kebutuhan | Rincian Kuantitas | Harga Satuan (Rp) | Subtotal (Rp) |
-| :-: | :--- | :---: | :---: | :---: |
-| 1 | *Snack Box* Narasumber & Tamu Khusus | 10 box | Rp. 25.000 | Rp. 250.000 |
-| 2 | Makan Siang Panitia Pelaksana (2 Hari) | 32 porsi | Rp. 25.000 | Rp. 800.000 |
-| | **TOTAL DIVISI KONSUMSI** | | | **Rp. 1.050.000** |
-
-#### 3. Divisi Publikasi dan Dokumentasi (Pubdok)
-| No | Uraian Kebutuhan | Rincian Kuantitas | Harga Satuan (Rp) | Subtotal (Rp) |
-| :-: | :--- | :---: | :---: | :---: |
-| 1 | Cetak *Backdrop* Panggung Auditorium (Ukuran 4 x 2 m) | 1 buah | Rp. 250.000 | Rp. 250.000 |
-| 2 | Cetak *Standing Banner* / X-Banner Edukasi & Penunjuk Arah | 2 buah | Rp. 100.000 | Rp. 200.000 |
-| 3 | Tali Lanyard & ID Card Panitia Pelaksana | 20 pcs | Rp. 2.500 | Rp. 50.000 |
-| | **TOTAL DIVISI PUBDOK** | | | **Rp. 500.000** |
-
-#### 4. Divisi Perlengkapan dan Logistik
-| No | Uraian Kebutuhan | Rincian Kuantitas | Harga Satuan (Rp) | Subtotal (Rp) |
-| :-: | :--- | :---: | :---: | :---: |
-| 1 | Sewa Kabel Roll *Heavy Duty* (Daya Tinggi) | 2 unit | Rp. 100.000 | Rp. 200.000 |
-| 2 | Baterai *Wireless Microphone* (Alkaline AA/9V) | 4 set | Rp. 25.000 | Rp. 100.000 |
-| 3 | Lakban Hitam Kabel & *Floor Marking* Booth | 3 roll | Rp. 25.000 | Rp. 75.000 |
-| 4 | Kantong Plastik *Trash Bag* & Sarung Tangan Kebersihan | 3 pack | Rp. 25.000 | Rp. 75.000 |
-| | **TOTAL DIVISI PERLENGKAPAN** | | | **Rp. 450.000** |
-
-#### 5. Divisi Humas dan P3K
-| No | Uraian Kebutuhan | Rincian Kuantitas | Harga Satuan (Rp) | Subtotal (Rp) |
-| :-: | :--- | :---: | :---: | :---: |
-| 1 | Air Mineral Botol & Dus Meja Registrasi | 3 dus | Rp. 50.000 | Rp. 150.000 |
-| 2 | Kotak Obat P3K & Sanitizer Area Pemeriksaan | 1 paket | Rp. 100.000 | Rp. 100.000 |
-| | **TOTAL DIVISI HUMAS & P3K** | | | **Rp. 250.000** |
+Seluruh pembiayaan operasional teknis, penyediaan sarana refraksi mata komputerisasi, unit Mobile Optik Bus, kacamata, konsumsi pemateri eksternal, hingga honorarium narasumber ditanggung sepenuhnya secara mandiri oleh pihak mitra pelaksana, yaitu **PT. Inti Citra Agung (Optik Melawai)**.
 
 ---
 
-### C. REKAPITULASI ANGGARAN BIAYA
+### C. RINGKASAN ANGGARAN KEGIATAN
 
-| No | Divisi Operasional | Alokasi Dana (Rp) |
-| :-: | :--- | :---: |
-| 1 | Divisi Acara | Rp. 750.000 |
-| 2 | Divisi Konsumsi | Rp. 1.050.000 |
-| 3 | Divisi Publikasi dan Dokumentasi (Pubdok) | Rp. 500.000 |
-| 4 | Divisi Perlengkapan dan Logistik | Rp. 450.000 |
-| 5 | Divisi Humas dan P3K | Rp. 250.000 |
-| | **TOTAL PENGELUARAN** | **Rp. 3.000.000** |
-
-| Neraca Rekapitulasi | Nominal (Rp) |
+| Ringkasan Anggaran Kas BEM FEB UKRIDA | Nominal (Rp) |
 | :--- | :---: |
-| **Total Rencana Pemasukan** | Rp. 3.000.000 |
-| **Total Rencana Pengeluaran** | Rp. 3.000.000 |
-| **Sisa Saldo Anggaran (Balance)** | **Rp. 0** |
+| **Total Penerimaan Sponsorship PT. Inti Citra Agung (Optik Melawai)** | Rp. 3.000.000 |
+| **Total Beban Pengeluaran BEM FEB UKRIDA** | **Rp. 0** |
+| **Sisa Saldo Kas Masuk BEM FEB UKRIDA (Surplus)** | **Rp. 3.000.000** |
 
 ---
 

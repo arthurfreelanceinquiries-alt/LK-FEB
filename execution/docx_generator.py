@@ -301,13 +301,13 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
     r_th.italic = True
     r_th.font.color.rgb = RGBColor(0, 0, 0)
     
-    # Logo BEM FEB UKRIDA Besar Terpusat di Tengah
+    # Logo BEM FEB UKRIDA Besar Terpusat di Tengah (Transparan Tanpa Kotak Hitam)
     p_logo = doc.add_paragraph()
     p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_logo.paragraph_format.space_before = Pt(28)
-    p_logo.paragraph_format.space_after = Pt(28)
+    p_logo.paragraph_format.space_before = Pt(20)
+    p_logo.paragraph_format.space_after = Pt(20)
     if os.path.exists(logo_official):
-        p_logo.add_run().add_picture(logo_official, width=Cm(11.5))
+        p_logo.add_run().add_picture(logo_official, width=Cm(8.5))
         
     # Identitas Organisasi Bagian Bawah
     p_cov_foot = doc.add_paragraph()
@@ -731,95 +731,23 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
             for r in p.runs:
                 r.bold = True
                 
-    # B. PENGELUARAN
-    add_sub_heading(doc, "B. RENCANA PENGELUARAN")
-    
-    div_tables_data = [
-        ("1. Divisi Acara", [
-            ("1", "Plakat Akrilik Penghargaan Narasumber", "1 buah", "Rp. 250.000", "Rp. 250.000"),
-            ("2", "Paket Cinderamata / Goodie Bag Pemateri & Mitra", "2 paket", "Rp. 150.000", "Rp. 300.000"),
-            ("3", "Cetak Sertifikat Kertas Linen & Map Panitia/Peserta", "40 lembar", "Rp. 5.000", "Rp. 200.000"),
-            ("", "TOTAL DIVISI ACARA", "", "", "Rp. 750.000"),
-        ]),
-        ("2. Divisi Konsumsi", [
-            ("1", "Snack Box Narasumber & Tamu Khusus", "10 box", "Rp. 25.000", "Rp. 250.000"),
-            ("2", "Makan Siang Panitia Pelaksana (2 Hari)", "32 porsi", "Rp. 25.000", "Rp. 800.000"),
-            ("", "TOTAL DIVISI KONSUMSI", "", "", "Rp. 1.050.000"),
-        ]),
-        ("3. Divisi Publikasi dan Dokumentasi (Pubdok)", [
-            ("1", "Cetak Backdrop Panggung Auditorium (Ukuran 4 x 2 m)", "1 buah", "Rp. 250.000", "Rp. 250.000"),
-            ("2", "Cetak Standing Banner / X-Banner Edukasi & Petunjuk", "2 buah", "Rp. 100.000", "Rp. 200.000"),
-            ("3", "Tali Lanyard & ID Card Panitia Pelaksana", "20 pcs", "Rp. 2.500", "Rp. 50.000"),
-            ("", "TOTAL DIVISI PUBDOK", "", "", "Rp. 500.000"),
-        ]),
-        ("4. Divisi Perlengkapan dan Logistik", [
-            ("1", "Sewa Kabel Roll Heavy Duty (Daya Tinggi)", "2 unit", "Rp. 100.000", "Rp. 200.000"),
-            ("2", "Baterai Wireless Microphone (Alkaline AA/9V)", "4 set", "Rp. 25.000", "Rp. 100.000"),
-            ("3", "Lakban Hitam Kabel & Floor Marking Booth", "3 roll", "Rp. 25.000", "Rp. 75.000"),
-            ("4", "Kantong Plastik Trash Bag & Sarung Tangan", "3 pack", "Rp. 25.000", "Rp. 75.000"),
-            ("", "TOTAL DIVISI PERLENGKAPAN", "", "", "Rp. 450.000"),
-        ]),
-        ("5. Divisi Humas dan P3K", [
-            ("1", "Air Mineral Botol & Dus Meja Registrasi", "3 dus", "Rp. 50.000", "Rp. 150.000"),
-            ("2", "Kotak Obat P3K & Sanitizer Area Pemeriksaan", "1 paket", "Rp. 100.000", "Rp. 100.000"),
-            ("", "TOTAL DIVISI HUMAS & P3K", "", "", "Rp. 250.000"),
-        ]),
-    ]
-    
-    for div_title, div_items in div_tables_data:
-        p_div = doc.add_paragraph()
-        p_div.paragraph_format.left_indent = Cm(1.27)
-        p_div.paragraph_format.space_before = Pt(8)
-        p_div.paragraph_format.space_after = Pt(2)
-        r_dt = p_div.add_run(div_title)
-        r_dt.font.name = "Times New Roman"
-        r_dt.font.size = Pt(11.5)
-        r_dt.bold = True
-        
-        t_div = doc.add_table(rows=1, cols=5)
-        format_standard_table(
-            t_div,
-            [Cm(1.0), Cm(5.8), Cm(2.2), Cm(2.5), Cm(2.5)],
-            ["No", "Uraian Kebutuhan", "Qty", "Harga Satuan", "Subtotal"],
-            div_items,
-            [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.RIGHT, WD_ALIGN_PARAGRAPH.RIGHT],
-            header_bg=ACCENT_GRAY,
-            font_size=10.5
-        )
-        for c in t_div.rows[-1].cells:
-            for p in c.paragraphs:
-                for r in p.runs:
-                    r.bold = True
-                    
-    # C. REKAPITULASI ANGGARAN BIAYA
-    add_sub_heading(doc, "C. REKAPITULASI ANGGARAN BIAYA")
-    
-    rekap_data = [
-        ("1", "Divisi Acara", "Rp. 750.000"),
-        ("2", "Divisi Konsumsi", "Rp. 1.050.000"),
-        ("3", "Divisi Publikasi dan Dokumentasi (Pubdok)", "Rp. 500.000"),
-        ("4", "Divisi Perlengkapan dan Logistik", "Rp. 450.000"),
-        ("5", "Divisi Humas dan P3K", "Rp. 250.000"),
-        ("", "TOTAL PENGELUARAN", "Rp. 3.000.000"),
-    ]
-    t_rekap = doc.add_table(rows=1, cols=3)
-    format_standard_table(
-        t_rekap,
-        [Cm(1.2), Cm(9.3), Cm(3.5)],
-        ["No", "Divisi Operasional", "Alokasi Dana"],
-        rekap_data,
-        [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.RIGHT],
-        header_bg=ACCENT_GRAY,
-        font_size=11
+    # B. KETERANGAN PENGELUARAN KEGIATAN
+    add_sub_heading(doc, "B. KETERANGAN PENGELUARAN KEGIATAN")
+    add_body_paragraph(
+        doc,
+        "Dalam penyelenggaraan kegiatan Optik Melawai Goes To Campus (OMGTC) 2026 ini, tidak terdapat rencana "
+        "pengeluaran dana yang dibebankan kepada kas Badan Eksekutif Mahasiswa Fakultas Ekonomi dan Bisnis (BEM FEB) "
+        "UKRIDA maupun Fakultas Ekonomi dan Bisnis UKRIDA (Total Pengeluaran BEM FEB: Rp. 0). Seluruh pembiayaan "
+        "operasional teknis, penyediaan sarana refraksi mata komputerisasi, unit Mobile Optik Bus, kacamata, konsumsi "
+        "pemateri eksternal, hingga honorarium narasumber ditanggung sepenuhnya secara mandiri oleh pihak mitra pelaksana, "
+        "yaitu PT. Inti Citra Agung (Optik Melawai)."
     )
-    for c in t_rekap.rows[-1].cells:
-        for p in c.paragraphs:
-            for r in p.runs:
-                r.bold = True
-                
-    # Tabel Neraca Balance (Total Pemasukan = Total Pengeluaran, Sisa = 0)
+    
+    # C. RINGKASAN ANGGARAN KEGIATAN
+    add_sub_heading(doc, "C. RINGKASAN ANGGARAN KEGIATAN")
+    
     p_sp_neraca = doc.add_paragraph()
-    p_sp_neraca.paragraph_format.space_before = Pt(6)
+    p_sp_neraca.paragraph_format.space_before = Pt(4)
     p_sp_neraca.paragraph_format.space_after = Pt(2)
     
     t_neraca = doc.add_table(rows=3, cols=2)
@@ -830,9 +758,9 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
     
     neraca_widths = [Cm(10.5), Cm(3.5)]
     neraca_rows = [
-        ("Total Rencana Pemasukan", "Rp. 3.000.000"),
-        ("Total Rencana Pengeluaran", "Rp. 3.000.000"),
-        ("Sisa Saldo Anggaran (BALANCE)", "Rp. 0"),
+        ("Total Penerimaan Sponsorship PT. Inti Citra Agung (Optik Melawai)", "Rp. 3.000.000"),
+        ("Total Beban Pengeluaran BEM FEB UKRIDA", "Rp. 0"),
+        ("Sisa Saldo Kas Masuk BEM FEB UKRIDA (Surplus)", "Rp. 3.000.000"),
     ]
     for idx, (label, val) in enumerate(neraca_rows):
         row = t_neraca.rows[idx]
@@ -841,7 +769,7 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
         row.cells[0].width = neraca_widths[0]
         row.cells[1].width = neraca_widths[1]
         
-        # Beri shading abu-abu pada baris Sisa Saldo (BALANCE)
+        # Beri shading abu-abu pada baris Saldo Kas
         if idx == 2:
             set_cell_shading(row.cells[0], ACCENT_GRAY)
             set_cell_shading(row.cells[1], ACCENT_GRAY)

@@ -40,9 +40,9 @@
   - Sub-G: Teknis Fasilitas Pelayanan (Booth 4x3m 4.000W di Junction, Mobile Bus 12m 8.000W di Parkir, Auditorium 100 kursi).
 - [x] **BAB IV: KEPANITIAAN** — Lengkap dengan Pelindung Dekan, Penasehat Wadek, Pengurus Inti, serta 5 Divisi Pelaksana (semua ber-NIM).
 - [x] **BAB V: ANGGARAN (RAB)** —
-  - Pemasukan: Rp. 3.000.000,- (Sponsorship Optik Melawai).
-  - Pengeluaran: Rp. 3.000.000,- (Acara Rp. 750.000, Konsumsi Rp. 1.050.000, Pubdok Rp. 500.000, Perlengkapan Rp. 450.000, Humas/P3K Rp. 250.000).
-  - **Sisa Anggaran: Rp. 0 (BALANCE SEMPURNA)**.
+  - Pemasukan: Rp. 3.000.000,- (Sponsorship PT. Inti Citra Agung / Optik Melawai).
+  - Pengeluaran: Rp. 0 (Seluruh biaya operasional & fasilitas ditanggung swadana oleh mitra Optik Melawai; bebas beban anggaran kas BEM FEB).
+  - **Saldo Kas Masuk BEM FEB: Rp. 3.000.000 (Surplus Kas Bersih)**.
 - [x] **BAB VI: PENUTUP & LEMBAR PENGESAHAN** —
   - Paragraf penutup formal.
   - Tanggal baku: "Jakarta, 01 September 2026".

@@ -66,8 +66,13 @@ def validate_rab(data: dict) -> dict:
     # Hitung sisa
     hasil["sisa"] = hasil["pemasukan_total"] - hasil["pengeluaran_total"]
     
+    is_swadana_vendor = data.get("tipe_anggaran") == "swadana_vendor" or (data.get("pengeluaran_bem") == 0 and not data.get("pengeluaran"))
+    
     # Validasi
-    if hasil["sisa"] != 0:
+    if is_swadana_vendor:
+        hasil["status"] = "PASS"
+        hasil["info"] = "Kegiatan Kemitraan / Swadana Vendor (Pengeluaran BEM FEB: Rp. 0)"
+    elif hasil["sisa"] != 0:
         hasil["status"] = "FAIL"
         if hasil["sisa"] > 0:
             hasil["errors"].append(
@@ -81,10 +86,10 @@ def validate_rab(data: dict) -> dict:
             )
     
     # Warnings
-    if hasil["pemasukan_total"] == 0:
+    if hasil["pemasukan_total"] == 0 and not is_swadana_vendor:
         hasil["warnings"].append("⚠️ Total pemasukan Rp 0 — pastikan sumber dana sudah diisi")
     
-    if not data.get("pengeluaran"):
+    if not data.get("pengeluaran") and not is_swadana_vendor:
         hasil["warnings"].append("⚠️ Tidak ada item pengeluaran — pastikan RAB sudah diisi")
     
     return hasil
@@ -107,6 +112,9 @@ def print_report(hasil: dict) -> None:
     
     print("\n" + "-"*60)
     
+    if hasil.get("info"):
+        print(f"  ℹ️ {hasil['info']}")
+        
     if hasil["errors"]:
         for err in hasil["errors"]:
             print(f"  {err}")
@@ -118,7 +126,10 @@ def print_report(hasil: dict) -> None:
     print("-"*60)
     
     if hasil["status"] == "PASS":
-        print("  ✅ RAB VALID — Pemasukan = Pengeluaran (Sisa Rp. 0)")
+        if hasil.get("info"):
+            print("  ✅ RAB VALID — Kemitraan Swadana Vendor (BEM FEB Bebas Biaya)")
+        else:
+            print("  ✅ RAB VALID — Pemasukan = Pengeluaran (Sisa Rp. 0)")
     else:
         print("  ❌ RAB TIDAK VALID — Perbaiki sebelum submit proposal!")
     
