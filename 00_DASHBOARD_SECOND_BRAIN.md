@@ -151,14 +151,14 @@ Anggota [Sie]   : [Nama] ([NIM])
 
 ## 🧠 6. Catatan Konteks & Pembelajaran
 
-### Dari Analisis PKKMB 2026:
-- Proposal terdiri dari **16 halaman**
-- Anggaran total: **Rp 10.710.000** (balance sempurna: Sisa Rp 0)
-- Peserta: Mahasiswa baru 2026 + angkatan 2023-2025 yang belum PKKMB
-- Kegiatan: 2 hari offline + 1 sesi online
-- Narasumber: 3 orang (2 dosen + 1 pihak eksternal)
-- Games: 5 jenis dengan tujuan berbeda
-- Panitia inti: ~30 orang dengan 5 sie (Acara, Perlengkapan, Pubdok, Humas, Konsumsi)
+### Dari Analisis LKMM II & PKKMB 2026 (Format Baku Autentik Google Docs):
+- **Margin Baku:** Kiri 4.0 cm (Binding), Atas 3.0 cm, Kanan 3.0 cm, Bawah 3.0 cm (Standar 4-3-3-3).
+- **Tipografi Murni:** 100% Times New Roman, warna hitam pekat `#000000`, 12 pt konsisten (10.5-11 pt untuk tabel padat).
+- **Cover Resmi:** Judul 12 pt Bold Centered, Tema 12 pt Bold Italic Centered, 1 Logo Besar BEM FEB UKRIDA (~11.5 cm) di tengah, identitas organisasi lengkap di bawah.
+- **Halaman Isi:** Dimulai langsung Halaman 2 dengan `I. LATAR BELAKANG` (TANPA kop surat berulang di dalam proposal multi-halaman).
+- **Format Kepanitiaan:** Tabel borderless 3 kolom (`Jabatan : Nama (NIM)`), rapi sejajar tanpa kotak-kotak kaku/zebra striping.
+- **Format Tabel (Rundown & Anggaran):** Border solid hitam 0.75 pt, header anggaran beraksen soft green `#B3E4A1`, baris Total dan Sisa Saldo Rp. 0 (Balance).
+- **Lembar Pengesahan (TTD):** Nama penandatangan **Bold + Underline** (`<u>Nama Lengkap</u>`), penataan borderless horizontal sejajar.
 
 ### Keputusan Format:
 - Nomor bab: Angka Romawi (I, II, III...)
@@ -178,6 +178,7 @@ Anggota [Sie]   : [Nama] ([NIM])
 | 28 Sep 2026 | Sesi 1 | Konsolidasi struktur folder — arsipkan PKKMB, LKMM II, Optik Melawai | Semua dalam 1 folder besar, bersih |
 | 28 Sep 2026 | Sesi 2 | Analisis proposal vendor OMGTC, rancang PRD & Implementation Plan, drafting Proposal resmi UKRIDA, & Audit Lapis 1-2 | Analisis, PRD, Plan, Proposal final, RAB JSON, & Audit lolos 10/10 |
 | 28 Sep 2026 | Sesi 2 | Ekspor Proposal OMGTC ke format Word (.docx) & Push ke GitHub | Proposal_OMGTC_FEB_UKRIDA_2026.docx & Sinkronisasi origin/main sukses |
+| 29 Sep 2026 | Sesi 3 | Analisis mendalam referensi `PROPOSAL LKMM TINGKAT II 2026 - Google Docs.pdf` & perombakan total `docx_generator.py` | Format 100% identik Google Docs: Margin 4-3-3-3, Cover 1 Logo HD BEM FEB, hapus kop berulang, kepanitiaan borderless, tabel border hitam & soft green #B3E4A1, TTD bold+underline |
 
 ---
 

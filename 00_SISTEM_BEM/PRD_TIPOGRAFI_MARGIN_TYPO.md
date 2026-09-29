@@ -28,14 +28,14 @@ terlihat tidak profesional saat diajukan ke Dekan atau Wakil Dekan.
 ## 2. Standar Baku Tipografi & Margin
 
 ### 2.1 Margin Halaman (Word / Google Docs)
-| Sisi | Nilai |
-|------|-------|
-| **Atas (Top)** | 2,5 cm |
-| **Bawah (Bottom)** | 2,5 cm |
-| **Kiri (Left)** | 3,0 cm *(lebih lebar untuk binding)* |
-| **Kanan (Right)** | 2,5 cm |
+| Sisi | Nilai Baku LK FEB |
+|------|-------------------|
+| **Kiri (Left)** | 4,0 cm *(binding margin resmi kemahasiswaan)* |
+| **Atas (Top)** | 3,0 cm |
+| **Kanan (Right)** | 3,0 cm |
+| **Bawah (Bottom)** | 3,0 cm |
 
-> **Referensi:** Ini adalah standar margin dokumen formal kemahasiswaan Indonesia (sama dengan standar skripsi UKRIDA).
+> **Referensi Empiris:** Standar baku dokumen proposal Google Docs BEM FEB UKRIDA (terverifikasi pada *PROPOSAL LKMM TINGKAT II 2026* dan *Proposal PKKMB FEB 2026*).
 
 ### 2.2 Font & Ukuran
 | Elemen | Font | Ukuran | Style |
