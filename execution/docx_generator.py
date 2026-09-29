@@ -477,6 +477,9 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
         "— Topik: \"Pencegahan Progresivitas Miopia dan Pemilihan Solusi Lensa Optik Ergonomis\""
     )
     
+    # Header color abu-abu netral elegan (#E0E0E0)
+    ACCENT_GRAY = "E0E0E0"
+
     # F. SUSUNAN ACARA / RUNDOWN
     add_sub_heading(doc, "F. SUSUNAN ACARA / RUNDOWN")
     
@@ -506,7 +509,7 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
         ["Waktu", "Durasi", "Kegiatan", "Lokasi", "PJ"],
         rundown_d1,
         [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.LEFT],
-        header_bg=None,
+        header_bg=ACCENT_GRAY,
         font_size=10.5
     )
     
@@ -544,7 +547,7 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
         ["Waktu", "Durasi", "Kegiatan", "Lokasi", "PJ"],
         rundown_d2,
         [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.LEFT],
-        header_bg=None,
+        header_bg=ACCENT_GRAY,
         font_size=10.5
     )
     
@@ -576,43 +579,46 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
     )
     
     panitia_entries = [
-        # (Jabatan, Colon, Nama + NIM, is_bold, space_after_pt)
-        ("Pelindung", ":", "Dekan Fakultas Ekonomi dan Bisnis\nDr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A", False, 4),
-        ("Penasehat", ":", "Wakil Dekan Fakultas Ekonomi dan Bisnis\nDr. Daniel Widjaja, S.E., M.M., CSCU, CEAP", False, 4),
-        ("Ketua BEM FEB", ":", "Arthur Reezan\t(312023002)", False, 2),
-        ("Wakil Ketua BEM FEB", ":", "Princess Auralia Barus\t(322024025)", False, 2),
-        ("Ketua Pelaksana", ":", "Fellicia Florens\t(322024018)", False, 2),
-        ("Wakil Ketua Pelaksana", ":", "Michelle Angelina\t(312024012)", False, 2),
-        ("Sekretaris I", ":", "Jessica Violant Nathaniel\t(322024015)", False, 2),
-        ("Sekretaris II", ":", "Rachel Angelina Tjahja\t(322024033)", False, 2),
-        ("Bendahara I", ":", "Jemima Putri Sutanta\t(312024022)", False, 2),
-        ("Bendahara II", ":", "Vanessa Clarissa\t(322024008)", False, 6),
+        # (Jabatan, Colon, Nama Lengkap, NIM, is_bold, space_after_pt)
+        ("Pelindung", ":", "Dekan Fakultas Ekonomi dan Bisnis\nDr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A", "", False, 4),
+        ("Penasehat", ":", "Wakil Dekan Fakultas Ekonomi dan Bisnis\nDr. Daniel Widjaja, S.E., M.M., CSCU, CEAP", "", False, 4),
+        ("Ketua BEM FEB", ":", "Arthur Reezan", "(312023002)", False, 2),
+        ("Wakil Ketua BEM FEB", ":", "Princess Auralia Barus", "(322024025)", False, 2),
+        ("Ketua Pelaksana", ":", "Fellicia Florens", "(322024018)", False, 2),
+        ("Wakil Ketua Pelaksana", ":", "Michelle Angelina", "(312024012)", False, 2),
+        ("Sekretaris I", ":", "Jessica Violant Nathaniel", "(322024015)", False, 2),
+        ("Sekretaris II", ":", "Rachel Angelina Tjahja", "(322024033)", False, 2),
+        ("Bendahara I", ":", "Jemima Putri Sutanta", "(312024022)", False, 2),
+        ("Bendahara II", ":", "Vanessa Clarissa", "(322024008)", False, 6),
         
-        ("Koordinator Acara", ":", "Jocelyn Jennifer\t(312024005)", True, 2),
-        ("Anggota Acara", ":", "Christopher Kevin\t(322024030)\nStephanie Nicole\t(312024019)", False, 6),
+        ("Koordinator Acara", ":", "Jocelyn Jennifer", "(312024005)", True, 2),
+        ("Anggota Acara", ":", "Christopher Kevin", "(322024030)", False, 2),
+        ("", "", "Stephanie Nicole", "(312024019)", False, 6),
         
-        ("Koordinator Perlengkapan", ":", "William Hans\t(322024040)", True, 2),
-        ("Anggota Perlengkapan", ":", "Michael Jonathan\t(312024028)\nDavid Surya\t(322024011)", False, 6),
+        ("Koordinator Perlengkapan", ":", "William Hans", "(322024040)", True, 2),
+        ("Anggota Perlengkapan", ":", "Michael Jonathan", "(312024028)", False, 2),
+        ("", "", "David Surya", "(322024011)", False, 6),
         
-        ("Koordinator Pubdok", ":", "Bryan Alexander\t(312024035)", True, 2),
-        ("Anggota Pubdok", ":", "Sharon Priscilla\t(322024029)", False, 6),
+        ("Koordinator Pubdok", ":", "Bryan Alexander", "(312024035)", True, 2),
+        ("Anggota Pubdok", ":", "Sharon Priscilla", "(322024029)", False, 6),
         
-        ("Koordinator Humas & Sponsor", ":", "Nathania Graciela\t(312024016)", True, 2),
-        ("Anggota Humas & Sponsor", ":", "Steven Immanuel\t(322024021)", False, 6),
+        ("Koordinator Humas & Sponsor", ":", "Nathania Graciela", "(312024016)", True, 2),
+        ("Anggota Humas & Sponsor", ":", "Steven Immanuel", "(322024021)", False, 6),
         
-        ("Koordinator Konsumsi", ":", "Clarissa Evelyn\t(312024009)", True, 2),
-        ("Anggota Konsumsi", ":", "Jennifer Amanda\t(322024027)", False, 4),
+        ("Koordinator Konsumsi", ":", "Clarissa Evelyn", "(312024009)", True, 2),
+        ("Anggota Konsumsi", ":", "Jennifer Amanda", "(322024027)", False, 4),
     ]
     
-    t_panitia = doc.add_table(rows=len(panitia_entries), cols=3)
+    t_panitia = doc.add_table(rows=len(panitia_entries), cols=4)
     t_panitia.alignment = WD_TABLE_ALIGNMENT.CENTER
     t_panitia.autofit = False
     set_table_borderless(t_panitia)
-    set_table_cell_margins(t_panitia, top=30, bottom=30, left=40, right=40)
+    set_table_cell_margins(t_panitia, top=25, bottom=25, left=30, right=30)
     
-    panitia_widths = [Cm(4.6), Cm(0.4), Cm(9.0)]
+    # Lebar kolom: Jabatan (5.0 cm), Titik Dua (0.4 cm), Nama (5.6 cm), NIM (3.0 cm) -> Total 14.0 cm
+    panitia_widths = [Cm(5.0), Cm(0.4), Cm(5.6), Cm(3.0)]
     
-    for idx, (jabatan, colon, nama_nim, is_bold, sp_after) in enumerate(panitia_entries):
+    for idx, (jabatan, colon, nama, nim, is_bold, sp_after) in enumerate(panitia_entries):
         row = t_panitia.rows[idx]
         
         # Col 0: Jabatan
@@ -645,30 +651,63 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
             r.bold = is_bold
             r.font.color.rgb = RGBColor(0, 0, 0)
             
-        # Col 2: Nama Lengkap & NIM
+        # Col 2: Nama Lengkap
         c2 = row.cells[2]
-        c2.text = nama_nim
-        c2.width = panitia_widths[2]
-        p2 = c2.paragraphs[0]
-        p2.alignment = WD_ALIGN_PARAGRAPH.LEFT
-        p2.paragraph_format.line_spacing = 1.15
-        p2.paragraph_format.space_before = Pt(0)
-        p2.paragraph_format.space_after = Pt(sp_after)
-        for r in p2.runs:
-            r.font.name = "Times New Roman"
-            r.font.size = Pt(12)
-            r.bold = is_bold
-            r.font.color.rgb = RGBColor(0, 0, 0)
-            
+        c3 = row.cells[3]
+        
+        if not nim:
+            # Baris Pelindung & Penasehat tanpa NIM -> gabungkan sel 2 & 3 agar gelar panjang tidak terpotong
+            c_merged = c2.merge(c3)
+            c_merged.text = nama
+            c_merged.width = panitia_widths[2] + panitia_widths[3]
+            p2 = c_merged.paragraphs[0]
+            p2.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            p2.paragraph_format.line_spacing = 1.15
+            p2.paragraph_format.space_before = Pt(0)
+            p2.paragraph_format.space_after = Pt(sp_after)
+            for r in p2.runs:
+                r.font.name = "Times New Roman"
+                r.font.size = Pt(12)
+                r.bold = is_bold
+                r.font.color.rgb = RGBColor(0, 0, 0)
+        else:
+            # Col 2: Nama
+            c2.text = nama
+            c2.width = panitia_widths[2]
+            p2 = c2.paragraphs[0]
+            p2.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            p2.paragraph_format.line_spacing = 1.15
+            p2.paragraph_format.space_before = Pt(0)
+            p2.paragraph_format.space_after = Pt(sp_after)
+            for r in p2.runs:
+                r.font.name = "Times New Roman"
+                r.font.size = Pt(12)
+                r.bold = is_bold
+                r.font.color.rgb = RGBColor(0, 0, 0)
+                
+            # Col 3: NIM (Dedicated Column terpisah, 100% sejajar vertikal lurus ke bawah)
+            c3.text = nim
+            c3.width = panitia_widths[3]
+            p3 = c3.paragraphs[0]
+            p3.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            p3.paragraph_format.line_spacing = 1.15
+            p3.paragraph_format.space_before = Pt(0)
+            p3.paragraph_format.space_after = Pt(sp_after)
+            for r in p3.runs:
+                r.font.name = "Times New Roman"
+                r.font.size = Pt(12)
+                r.bold = is_bold
+                r.font.color.rgb = RGBColor(0, 0, 0)
+                
     prevent_row_split_and_repeat_header(t_panitia)
     
     # ==============================================================
-    # 7. BAB V: ANGGARAN (STANDAR LKMM II DENGAN SHADING SOFT GREEN)
+    # 7. BAB V: ANGGARAN (STANDAR FORMAL DENGAN HEADER ABU-ABU NETRAL)
     # ==============================================================
     add_bab_heading(doc, "V. ANGGARAN")
     
-    # Header color khas Google Docs LK FEB (#B3E4A1)
-    ACCENT_GREEN = "B3E4A1"
+    # Header color abu-abu netral elegan (#E0E0E0)
+    ACCENT_GRAY = "E0E0E0"
     
     # A. PEMASUKAN
     add_sub_heading(doc, "A. RENCANA PEMASUKAN")
@@ -683,7 +722,7 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
             ("", "TOTAL PEMASUKAN", "Rp. 3.000.000"),
         ],
         [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.RIGHT],
-        header_bg=ACCENT_GREEN,
+        header_bg=ACCENT_GRAY,
         font_size=11
     )
     # Bold baris total pemasukan
@@ -744,7 +783,7 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
             ["No", "Uraian Kebutuhan", "Qty", "Harga Satuan", "Subtotal"],
             div_items,
             [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.RIGHT, WD_ALIGN_PARAGRAPH.RIGHT],
-            header_bg=ACCENT_GREEN,
+            header_bg=ACCENT_GRAY,
             font_size=10.5
         )
         for c in t_div.rows[-1].cells:
@@ -770,7 +809,7 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
         ["No", "Divisi Operasional", "Alokasi Dana"],
         rekap_data,
         [WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.RIGHT],
-        header_bg=ACCENT_GREEN,
+        header_bg=ACCENT_GRAY,
         font_size=11
     )
     for c in t_rekap.rows[-1].cells:
@@ -802,10 +841,10 @@ def generate_proposal_docx(output_path="01_Proposal/OMGTC_2026/Proposal_OMGTC_FE
         row.cells[0].width = neraca_widths[0]
         row.cells[1].width = neraca_widths[1]
         
-        # Beri shading hijau pada baris Sisa Saldo (BALANCE)
+        # Beri shading abu-abu pada baris Sisa Saldo (BALANCE)
         if idx == 2:
-            set_cell_shading(row.cells[0], ACCENT_GREEN)
-            set_cell_shading(row.cells[1], ACCENT_GREEN)
+            set_cell_shading(row.cells[0], ACCENT_GRAY)
+            set_cell_shading(row.cells[1], ACCENT_GRAY)
             
         p0 = row.cells[0].paragraphs[0]
         p1 = row.cells[1].paragraphs[0]
