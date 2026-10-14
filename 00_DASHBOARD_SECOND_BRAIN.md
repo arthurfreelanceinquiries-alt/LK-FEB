@@ -48,9 +48,9 @@
 | OMGTC FEB UKRIDA 2026 | Proposal Resmi (.md & .docx), RAB, Audit Review | Sep 2026 | `01_Proposal/OMGTC_2026/` |
 
 ### 🟡 Sedang Berjalan
-| Acara | Dokumen | Status | Lokasi File |
-|-------|---------|--------|-------------|
-| *(belum ada)* | - | - | - |
+| Acara | Dokumen | Status | Lokasi File | Next Milestone / Blocker |
+|-------|---------|--------|-------------|--------------------------|
+| Portal LK-FEB Modernization & UI/UX Sprint | 22 UI Primitives, Mobile Card Stack, Auth RBAC, OFSPACE 3-Column Spec, QA Audit 2-Lapis | 🟢 Siap Production (Lulus QA 9.2/10) | `Z:/LK-FEB-main/LK-FEB-main/portal-lk` | **Next:** UAT BPH Team & Deployment VPS. Server aktif di http://localhost:3110. |
 
 ### 🔴 Belum Dimulai
 | Acara | Jenis Dokumen | Target |
@@ -68,6 +68,10 @@
 - **00_SISTEM_BEM/PRD_TIPOGRAFI_MARGIN_TYPO.md** → Standar margin, font, typo
 - **00_SISTEM_BEM/IMPLEMENTATION_PLAN.md** → Rencana implementasi sistem
 - **00_SISTEM_BEM/IMPLEMENTATION_PLAN_TIPOGRAFI.md** → Rencana implementasi tipografi
+- **00_SISTEM_BEM/PORTAL_LK_TECHNICAL.md** → Dokumentasi teknis Portal LK-FEB (Tech Stack, Schema, Env Vars)
+- **00_SISTEM_BEM/PORTAL_BUG_TRACKING.md** → Bug log & issue tracking Portal LK-FEB
+- **00_SISTEM_BEM/PORTAL_CHANGELOG.md** → Roadmap & changelog fase Portal LK-FEB (Phase 0-3)
+- **00_SISTEM_BEM/PORTAL_DATA_MAPPING.md** → Mapping data Excel ke Supabase schema
 
 ### B. Templates & Referensi Format
 - **05_Referensi_Template/TEMPLATE_PROPOSAL.md** → Template proposal standar
@@ -179,7 +183,10 @@ Anggota [Sie]   : [Nama] ([NIM])
 | 28 Sep 2026 | Sesi 2 | Analisis proposal vendor OMGTC, rancang PRD & Implementation Plan, drafting Proposal resmi UKRIDA, & Audit Lapis 1-2 | Analisis, PRD, Plan, Proposal final, RAB JSON, & Audit lolos 10/10 |
 | 29 Sep 2026 | Sesi 3 | Analisis mendalam referensi `PROPOSAL LKMM TINGKAT II 2026 - Google Docs.pdf` & perombakan total `docx_generator.py` | Format 100% identik Google Docs: Margin 4-3-3-3, Cover 1 Logo HD BEM FEB, hapus kop berulang, TTD bold+underline |
 | 29 Sep 2026 | Sesi 3 | Revisi visual: ubah warna header tabel ke abu-abu netral (#E0E0E0) & presisi perataan NIM via tabel 4-kolom | Tabel anggaran & rundown seragam abu-abu elegan; NIM kepanitiaan 100% sejajar vertikal |
-| 29 Sep 2026 | Sesi 4 | Hilangkan rincian pengeluaran divisi OMGTC (Swadana Vendor, Pengeluaran BEM FEB: Rp. 0) & perbaiki transparansi logo BEM FEB (buang background kotak hitam) | Proposal docx, md, rab.json diperbarui, logo transparan murni RGBA, validasi RAB PASS |
+|| 29 Sep 2026 | Sesi 4 | Hilangkan rincian pengeluaran divisi OMGTC (Swadana Vendor, Pengeluaran BEM FEB: Rp. 0) & perbaiki transparansi logo BEM FEB (buang background kotak hitam) | Proposal docx, md, rab.json diperbarui, logo transparan murni RGBA, validasi RAB PASS |
+|| 14 Okt 2026 | Sesi 5 | Dokumentasi Portal LK-FEB: Tech Stack, DB Schema, Environment Variables, Dependencies | 4 file baru: PORTAL_LK_TECHNICAL.md, PORTAL_BUG_TRACKING.md, PORTAL_CHANGELOG.md, PORTAL_DATA_MAPPING.md |
+|| 14 Okt 2026 | Sesi 5 | Update Dashboard: status Portal ke 🟡 In Progress, tambah navigasi ke 4 dokumen teknis baru | Dashboard & dokumentasi sinkron, siap Phase 0 handoff ke @lk-formatter |
+|| 14 Okt 2026 | Sesi 6 | Sprint Marathon Portal LK-FEB: Centralize tokens, bangun 22 UI primitives, mobile Card Stack <640px, align NextAuth port 3110, spesifikasi OFSPACE 3-column layout, & verifikasi QA 2-Lapis | Skor QA 9.2/10 (PASS), TypeScript 0 error, build 25+ pages lolos, server live di http://localhost:3110 |
 
 ---
 
