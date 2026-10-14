@@ -187,6 +187,7 @@ Anggota [Sie]   : [Nama] ([NIM])
 || 14 Okt 2026 | Sesi 5 | Dokumentasi Portal LK-FEB: Tech Stack, DB Schema, Environment Variables, Dependencies | 4 file baru: PORTAL_LK_TECHNICAL.md, PORTAL_BUG_TRACKING.md, PORTAL_CHANGELOG.md, PORTAL_DATA_MAPPING.md |
 || 14 Okt 2026 | Sesi 5 | Update Dashboard: status Portal ke 🟡 In Progress, tambah navigasi ke 4 dokumen teknis baru | Dashboard & dokumentasi sinkron, siap Phase 0 handoff ke @lk-formatter |
 || 14 Okt 2026 | Sesi 6 | Sprint Marathon Portal LK-FEB: Centralize tokens, bangun 22 UI primitives, mobile Card Stack <640px, align NextAuth port 3110, spesifikasi OFSPACE 3-column layout, & verifikasi QA 2-Lapis | Skor QA 9.2/10 (PASS), TypeScript 0 error, build 25+ pages lolos, server live di http://localhost:3110 |
+|| 14 Okt 2026 | Sesi 7 | Bug Hunt & Fix: Ditemukan 2 routing errors (404) di LeftSidebar menu links. `/kalender`→`/rundown`, `/admin-sync`→`/admin/sync`. Patch applied, commit 034c79b. Menunggu QA Verification Round 2 dari @lk-auditor. | 🔴 **2 Bugs Fixed** — Menu navigation corrected. Pending: Final audit confirmation. |
 
 ---
 
