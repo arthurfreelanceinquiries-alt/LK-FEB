@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Input RAB Interaktif — BEM FEB UKRIDA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0B2A5B',
+              'navy-dark': '#071C3D',
+              'navy-light': '#134080',
+              gold: '#FDB913',
+              'gold-dark': '#E5A50B',
+              'gold-light': '#FEF3D6',
+            },
+            balance: {
+              green: '#10B981',
+              'green-light': '#ECFDF5',
+              'green-border': '#A7F3D0',
+              red: '#EF4444',
+              'red-light': '#FEF2F2',
+              'red-border': '#FECACA',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            print: ['"Times New Roman"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .touch-target { min-height: 44px; min-width: 44px; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-20">
+
+  <!-- TOP APP BAR -->
+  <header class="bg-[#0B2A5B] text-white sticky top-0 z-30 shadow-md">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="p-2 rounded-lg hover:bg-white/10 transition-colors" title="Kembali">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+        </a>
+        <div class="flex items-center space-x-2">
+          <div class="w-9 h-9 rounded-lg bg-[#FDB913] text-[#071C3D] font-bold flex items-center justify-center text-sm shadow">
+            FEB
+          </div>
+          <div>
+            <h1 class="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
+              Portal Ormawa BEM FEB
+              <span class="text-[10px] font-semibold bg-[#FDB913] text-[#071C3D] px-2 py-0.5 rounded-full">UKRIDA</span>
+            </h1>
+            <p class="text-xs text-blue-200">Form Pengajuan Anggaran RAB (Rencana Anggaran Biaya)</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button onclick="openPreviewModal()" class="hidden sm:inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3 py-2 rounded-lg border border-white/20 transition touch-target">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+          Pratinjau Dokumen
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 pt-6 space-y-6">
+
+    <!-- BREADCRUMB & INTRO -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-200 pb-4">
+      <div>
+        <div class="text-xs font-medium text-slate-500 flex items-center gap-1.5 mb-1">
+          <span>Proposal Kegiatan</span>
+          <span>&rsaquo;</span>
+          <span class="text-[#0B2A5B] font-semibold">Penyusunan RAB Anggaran</span>
+        </div>
+        <h2 class="text-xl font-bold text-slate-900">Formulir Penganggaran & Lampiran Dokumen</h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-md flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          Standar RAB: Sisa Wajib Rp 0
+        </span>
+      </div>
+    </div>
+
+    <!-- METADATA PROPOSAL CARD -->
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+      <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-2">
+        <span class="w-6 h-6 rounded-md bg-[#0B2A5B]/10 text-[#0B2A5B] flex items-center justify-center text-xs font-bold">1</span>
+        Informasi Acara & Kepanitiaan
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Acara / Kegiatan <span class="text-red-500">*</span></label>
+          <input type="text" id="event_name" value="LKMM Tingkat II FEB UKRIDA 2026" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0B2A5B] focus:border-[#0B2A5B]" placeholder="Contoh: PKKMB FEB 2026">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Ketua Pelaksana <span class="text-red-500">*</span></label>
+          <input type="text" id="lead_name" value="Arthur Reezan (NIM: 312023002)" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0B2A5B] focus:border-[#0B2A5B]" placeholder="Nama & NIM">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Tanggal Pelaksanaan <span class="text-red-500">*</span></label>
+          <input type="text" id="event_date" value="14 - 15 November 2026" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0B2A5B] focus:border-[#0B2A5B]" placeholder="Contoh: 14 - 15 Nov 2026">
+        </div>
+      </div>
+    </div>
+
+    <!-- REAL-TIME BALANCE INDICATOR BANNER (STICKY ON SCROLL) -->
+    <div id="balance_indicator" class="sticky top-16 z-20 transition-all duration-300 transform rounded-xl p-4 shadow-lg border">
+      <!-- Dynamic content rendered by JS -->
+    </div>
+
+    <!-- SECTION 2: PEMASUKAN / SUMBER DANA -->
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-md bg-[#0B2A5B]/10 text-[#0B2A5B] flex items-center justify-center text-xs font-bold">2</span>
+          Rencana Pemasukan (Sumber Dana)
+        </h3>
+        <button type="button" onclick="addIncomeRow()" class="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#0B2A5B] text-white px-3 py-1.5 rounded-lg hover:bg-[#071C3D] transition touch-target">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          Tambah Sumber Dana
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold">
+              <th class="p-2.5 w-12 text-center">No</th>
+              <th class="p-2.5">Sumber Dana / Uraian</th>
+              <th class="p-2.5 w-44 text-right">Nominal (Rp)</th>
+              <th class="p-2.5 w-14 text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="income_tbody" class="divide-y divide-slate-100">
+            <!-- Populated by JS -->
+          </tbody>
+          <tfoot>
+            <tr class="bg-slate-50/80 font-bold text-slate-900 border-t border-slate-200">
+              <td colspan="2" class="p-2.5 text-right uppercase tracking-wider text-xs">Total Pemasukan:</td>
+              <td id="income_total_display" class="p-2.5 text-right text-sm text-[#0B2A5B]">Rp 0</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 3: PENGELUARAN (PER DIVISI) -->
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-md bg-[#0B2A5B]/10 text-[#0B2A5B] flex items-center justify-center text-xs font-bold">3</span>
+          Rencana Pengeluaran (Per Divisi Kepanitiaan)
+        </h3>
+        <div class="text-xs font-medium text-slate-500">
+          Sesuai Struktur: Acara, Konsumsi, Pubdok, Perlengkapan, Humas/P3K
+        </div>
+      </div>
+
+      <!-- TABS OR ACCORDIONS FOR DIVISI -->
+      <div id="expense_divisions_container" class="space-y-6">
+        <!-- Rendered by JS for: Acara, Konsumsi, Pubdok, Perlengkapan, Humas & P3K -->
+      </div>
+
+      <div class="bg-slate-100 rounded-xl p-4 flex items-center justify-between border border-slate-200">
+        <div class="text-xs font-bold text-slate-700 uppercase tracking-wide">
+          Total Seluruh Pengeluaran:
+        </div>
+        <div id="expense_grand_total_display" class="text-base font-extrabold text-slate-900">
+          Rp 0
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: DRAG & DROP LAMPIRAN DOKUMEN -->
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+      <div class="border-b border-slate-100 pb-2">
+        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-md bg-[#0B2A5B]/10 text-[#0B2A5B] flex items-center justify-center text-xs font-bold">4</span>
+          Lampiran Dokumen Pendukung (Drag & Drop)
+        </h3>
+        <p class="text-xs text-slate-500 mt-0.5">Unggah Surat Pengantar SPU, Surat Undangan Narasumber, atau Rincian Penawaran Vendor (PDF, XLSX, DOCX, Maks 10MB)</p>
+      </div>
+
+      <div id="dropzone" class="border-2 border-dashed border-slate-300 hover:border-[#0B2A5B] bg-slate-50/70 hover:bg-blue-50/40 rounded-xl p-8 text-center transition cursor-pointer relative group">
+        <input type="file" id="file_input" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="handleFileSelect(event)">
+        <div class="flex flex-col items-center justify-center space-y-2 pointer-events-none">
+          <div class="w-12 h-12 rounded-full bg-blue-100 text-[#0B2A5B] flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+          </div>
+          <div class="text-xs font-semibold text-slate-700">
+            <span class="text-[#0B2A5B] underline">Pilih file</span> atau seret dan jatuhkan berkas ke sini
+          </div>
+          <p class="text-[11px] text-slate-400">PDF, Excel (.xlsx), Word (.docx), atau Gambar (PNG/JPG)</p>
+        </div>
+      </div>
+
+      <!-- FILE LIST -->
+      <div id="file_list_container" class="space-y-2 pt-2">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- SUBMIT ACTIONS BAR -->
+    <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-xs text-slate-500 flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Data tersimpan otomatis di local draft browser.
+      </div>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <button type="button" onclick="openPreviewModal()" class="flex-1 sm:flex-none px-4 py-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-bold transition touch-target">
+          Pratinjau Dokumen
+        </button>
+        <button type="button" id="submit_btn" onclick="submitProposal()" class="flex-1 sm:flex-none px-6 py-2.5 rounded-lg bg-[#0B2A5B] hover:bg-[#071C3D] text-white text-xs font-bold shadow-md transition disabled:opacity-40 disabled:cursor-not-allowed touch-target flex items-center justify-center gap-2">
+          <span>Submit Proposal & RAB</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL: DOKUMEN LIVE PREVIEW -->
+  <div id="preview_modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200">
+      
+      <!-- MODAL HEADER -->
+      <div class="px-6 py-4 bg-[#0B2A5B] text-white rounded-t-2xl flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <div class="w-7 h-7 bg-[#FDB913] text-[#071C3D] font-bold rounded flex items-center justify-center text-xs">UK</div>
+          <h4 class="text-sm font-bold">Pratinjau Dokumen Resmi — Proposal BEM FEB UKRIDA</h4>
+        </div>
+        <button onclick="closePreviewModal()" class="text-white/80 hover:text-white p-1 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- MODAL BODY (PRINT SIMULATOR / PAPER VIEW) -->
+      <div class="p-6 overflow-y-auto bg-slate-100 flex-1 space-y-4">
+        <div class="bg-white shadow-lg mx-auto max-w-[210mm] p-10 border border-slate-200 font-print text-slate-900 text-sm leading-relaxed" style="font-family: 'Times New Roman', serif;">
+          
+          <!-- KOP SURAT RESMI -->
+          <div class="border-b-2 border-slate-900 pb-3 mb-6 text-center">
+            <h2 class="text-base font-bold uppercase tracking-wide">BADAN EKSEKUTIF MAHASISWA</h2>
+            <h1 class="text-lg font-bold uppercase tracking-wider text-[#0B2A5B]">FAKULTAS EKONOMI & BISNIS — UNIVERSITAS KRISTEN KRIDA WACANA</h1>
+            <p class="text-xs italic text-slate-600 mt-1">Jl. Tanjung Duren Raya No. 4, Jakarta Barat 11470 | Telp: 021 566 6952 | Fax: 021 566 6956</p>
+          </div>
+
+          <!-- JUDUL PROPOSAL -->
+          <div class="text-center mb-6">
+            <h3 class="text-base font-bold uppercase tracking-wider">PROPOSAL KEGIATAN</h3>
+            <h4 id="pv_event_name" class="text-sm font-bold uppercase mt-1">LKMM TINGKAT II FEB UKRIDA 2026</h4>
+            <p class="text-xs italic mt-0.5">"Membangun Kepemimpinan Transformasional yang Beretika dan Berdaya Saing Global"</p>
+          </div>
+
+          <!-- BAGIAN RAB DOKUMEN -->
+          <div class="space-y-4">
+            <h5 class="font-bold underline text-xs uppercase">VI. RENCANA ANGGARAN BIAYA (RAB)</h5>
+            
+            <!-- TABEL PEMASUKAN -->
+            <div>
+              <p class="font-bold text-xs mb-1">A. Pemasukan</p>
+              <table class="w-full border border-slate-400 text-xs border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 border-b border-slate-400">
+                    <th class="border border-slate-400 p-1 w-10 text-center">No</th>
+                    <th class="border border-slate-400 p-1 text-left">Sumber Dana</th>
+                    <th class="border border-slate-400 p-1 text-right w-36">Jumlah</th>
+                  </tr>
+                </thead>
+                <tbody id="pv_income_body"></tbody>
+                <tfoot>
+                  <tr class="font-bold bg-slate-50">
+                    <td colspan="2" class="border border-slate-400 p-1 text-right">Total Pemasukan:</td>
+                    <td id="pv_income_total" class="border border-slate-400 p-1 text-right">Rp 0</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- TABEL PENGELUARAN -->
+            <div>
+              <p class="font-bold text-xs mb-1">B. Pengeluaran</p>
+              <table class="w-full border border-slate-400 text-xs border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 border-b border-slate-400">
+                    <th class="border border-slate-400 p-1 w-8 text-center">No</th>
+                    <th class="border border-slate-400 p-1 text-left">Keterangan / Divisi</th>
+                    <th class="border border-slate-400 p-1 text-center w-14">Qty</th>
+                    <th class="border border-slate-400 p-1 text-right w-28">Harga Satuan</th>
+                    <th class="border border-slate-400 p-1 text-right w-32">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="pv_expense_body"></tbody>
+                <tfoot>
+                  <tr class="font-bold bg-slate-50">
+                    <td colspan="4" class="border border-slate-400 p-1 text-right">Total Pengeluaran:</td>
+                    <td id="pv_expense_total" class="border border-slate-400 p-1 text-right">Rp 0</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- STATUS BALANCE RINGKASAN -->
+            <div id="pv_balance_summary" class="p-2 border text-xs font-bold text-center mt-3"></div>
+
+            <!-- TANDA TANGAN SECTION -->
+            <div class="pt-8 grid grid-cols-2 text-center text-xs gap-8">
+              <div>
+                <p>Mengetahui,</p>
+                <p class="font-bold">Ketua Pelaksana</p>
+                <div class="h-16"></div>
+                <p id="pv_lead_sig" class="font-bold underline">Arthur Reezan</p>
+                <p>NIM: 312023002</p>
+              </div>
+              <div>
+                <p>Menyetujui,</p>
+                <p class="font-bold">Ketua BEM FEB UKRIDA</p>
+                <div class="h-16"></div>
+                <p class="font-bold underline">Arthur Reezan</p>
+                <p>NIM: 312023002</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MODAL FOOTER -->
+      <div class="px-6 py-3 bg-white border-t border-slate-200 rounded-b-2xl flex justify-between items-center">
+        <span class="text-xs text-slate-500">Standar Format Dokumen BEM FEB: Font Times New Roman 12pt, Margin 4-3-3-3 cm</span>
+        <div class="flex gap-2">
+          <button onclick="closePreviewModal()" class="px-4 py-2 border border-slate-300 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-50">
+            Tutup
+          </button>
+          <button onclick="window.print()" class="px-4 py-2 bg-[#0B2A5B] text-white text-xs font-semibold rounded-lg hover:bg-[#071C3D] flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            Cetak PDF Resmi
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT STATE ENGINE & CALCULATION -->
+  <script>
+    // INITIAL STATE SESUAI STANDAR BEM FEB UKRIDA
+    let incomeData = [
+      { id: 1, source: "Dana Fakultas Ekonomi & Bisnis UKRIDA", amount: 6500000 },
+      { id: 2, source: "Kontribusi Peserta LKMM (40 orang @ Rp 50.000)", amount: 2000000 },
+      { id: 3, source: "Sponsorship & Dana Usaha BEM", amount: 1500000 }
+    ];
+
+    const divisionNames = [
+      { key: "acara", label: "Divisi Acara", icon: "🎤" },
+      { key: "konsumsi", label: "Divisi Konsumsi", icon: "🍱" },
+      { key: "pubdok", label: "Divisi Publikasi & Dokumentasi", icon: "📷" },
+      { key: "perlengkapan", label: "Divisi Perlengkapan & Logistik", icon: "📦" },
+      { key: "humas_p3k", label: "Divisi Humas & P3K", icon: "🩺" }
+    ];
+
+    let expenseData = {
+      acara: [
+        { id: 1, item: "Honorarium Pembicara Utama (2 Sesi)", qty: 2, price: 1500000 },
+        { id: 2, item: "Sertifikat Pemateri + Plakat Kayu FEB", qty: 2, price: 250000 }
+      ],
+      konsumsi: [
+        { id: 1, item: "Makan Siang Peserta & Panitia (Hari 1 & 2)", qty: 100, price: 30000 },
+        { id: 2, item: "Snack Box Sesi Pagi", qty: 100, price: 15000 }
+      ],
+      pubdok: [
+        { id: 1, item: "Banner Backdrop Panggung (4x2 meter)", qty: 1, price: 250000 },
+        { id: 2, item: "ID Card & Lanyard Peserta + Panitia", qty: 60, price: 10000 }
+      ],
+      perlengkapan: [
+        { id: 1, item: "Sewa Sound System & Wireless Mic Tambahan", qty: 1, price: 750000 },
+        { id: 2, item: "Kertas Plano, Spidol & ATK Workshop", qty: 1, price: 150000 }
+      ],
+      humas_p3k: [
+        { id: 1, item: "Obat-obatan Dasar & P3K Kit", qty: 1, price: 250000 }
+      ]
+    };
+
+    let uploadedFiles = [
+      { name: "Surat_Permohonan_Dana_Dekanat.pdf", size: 452000, type: "application/pdf" },
+      { name: "RAB_Detail_Vendor_Konsumsi.xlsx", size: 184000, type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
+    ];
+
+    function formatRupiah(num) {
+      return "Rp " + Number(num || 0).toLocaleString("id-ID");
+    }
+
+    // RENDER PEMASUKAN
+    function renderIncome() {
+      const tbody = document.getElementById("income_tbody");
+      tbody.innerHTML = "";
+      let total = 0;
+
+      incomeData.forEach((row, idx) => {
+        total += row.amount;
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50 transition-colors";
+        tr.innerHTML = `
+          <td class="p-2.5 text-center text-slate-400 font-medium">${idx + 1}</td>
+          <td class="p-2.5">
+            <input type="text" value="${escapeHtml(row.source)}" onchange="updateIncomeSource(${row.id}, this.value)" class="w-full px-2.5 py-1.5 text-xs rounded border border-slate-200 focus:ring-1 focus:ring-[#0B2A5B] focus:border-[#0B2A5B]" placeholder="Nama sumber dana...">
+          </td>
+          <td class="p-2.5 text-right">
+            <div class="relative">
+              <span class="absolute left-2.5 top-1.5 text-slate-400 text-xs">Rp</span>
+              <input type="number" value="${row.amount}" oninput="updateIncomeAmount(${row.id}, this.value)" class="w-full pl-8 pr-2 py-1.5 text-right text-xs rounded border border-slate-200 focus:ring-1 focus:ring-[#0B2A5B] font-semibold text-slate-800">
+            </div>
+          </td>
+          <td class="p-2.5 text-center">
+            <button type="button" onclick="removeIncomeRow(${row.id})" class="p-1 text-slate-400 hover:text-red-500 rounded hover:bg-red-50 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("income_total_display").innerText = formatRupiah(total);
+      calculateAndRenderBalance();
+    }
+
+    function addIncomeRow() {
+      const newId = Date.now();
+      incomeData.push({ id: newId, source: "Sumber Dana Baru", amount: 0 });
+      renderIncome();
+    }
+
+    function removeIncomeRow(id) {
+      if (incomeData.length <= 1) {
+        alert("Minimal harus ada satu sumber pemasukan.");
+        return;
+      }
+      incomeData = incomeData.filter(i => i.id !== id);
+      renderIncome();
+    }
+
+    function updateIncomeSource(id, val) {
+      const item = incomeData.find(i => i.id === id);
+      if (item) item.source = val;
+      calculateAndRenderBalance();
+    }
+
+    function updateIncomeAmount(id, val) {
+      const item = incomeData.find(i => i.id === id);
+      if (item) item.amount = Math.max(0, parseInt(val) || 0);
+      document.getElementById("income_total_display").innerText = formatRupiah(
+        incomeData.reduce((acc, curr) => acc + curr.amount, 0)
+      );
+      calculateAndRenderBalance();
+    }
+
+    // RENDER PENGELUARAN DIVISI
+    function renderExpenses() {
+      const container = document.getElementById("expense_divisions_container");
+      container.innerHTML = "";
+
+      divisionNames.forEach(div => {
+        const items = expenseData[div.key] || [];
+        let subtotalDivisi = items.reduce((acc, it) => acc + (it.qty * it.price), 0);
+
+        const card = document.createElement("div");
+        card.className = "border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm";
+        card.innerHTML = `
+          <div class="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200">
+            <div class="flex items-center space-x-2">
+              <span class="text-base">${div.icon}</span>
+              <span class="font-bold text-xs text-slate-800">${div.label}</span>
+              <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-medium">${items.length} item</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <span class="text-xs font-semibold text-slate-600">Subtotal: <span class="text-[#0B2A5B] font-bold" id="subtotal_${div.key}">${formatRupiah(subtotalDivisi)}</span></span>
+              <button type="button" onclick="addExpenseItem('${div.key}')" class="text-[11px] font-semibold text-[#0B2A5B] hover:text-[#071C3D] bg-white border border-slate-200 px-2.5 py-1 rounded-md hover:bg-slate-50 transition shadow-xs">
+                + Tambah Item
+              </button>
+            </div>
+          </div>
+          <div class="p-3 overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="text-slate-400 border-b border-slate-100 text-[11px]">
+                  <th class="pb-1.5 pl-1">Nama Item / Pengeluaran</th>
+                  <th class="pb-1.5 w-20 text-center">Qty</th>
+                  <th class="pb-1.5 w-32 text-right">Harga Satuan</th>
+                  <th class="pb-1.5 w-32 text-right">Subtotal</th>
+                  <th class="pb-1.5 w-10 text-center"></th>
+                </tr>
+              </thead>
+              <tbody id="expense_rows_${div.key}" class="divide-y divide-slate-100">
+              </tbody>
+            </table>
+          </div>
+        `;
+        container.appendChild(card);
+        renderDivisionRows(div.key);
+      });
+
+      calculateAndRenderBalance();
+    }
+
+    function renderDivisionRows(divKey) {
+      const tbody = document.getElementById(`expense_rows_${divKey}`);
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      const items = expenseData[divKey] || [];
+
+      items.forEach(it => {
+        const rowTotal = it.qty * it.price;
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50/70 transition-colors";
+        tr.innerHTML = `
+          <td class="py-2 pl-1">
+            <input type="text" value="${escapeHtml(it.item)}" onchange="updateExpenseField('${divKey}', ${it.id}, 'item', this.value)" class="w-full px-2 py-1 text-xs rounded border border-slate-200 focus:ring-1 focus:ring-[#0B2A5B]" placeholder="Nama kebutuhan item...">
+          </td>
+          <td class="py-2 text-center">
+            <input type="number" min="1" value="${it.qty}" oninput="updateExpenseField('${divKey}', ${it.id}, 'qty', this.value)" class="w-16 px-1.5 py-1 text-center text-xs rounded border border-slate-200 focus:ring-1 focus:ring-[#0B2A5B]">
+          </td>
+          <td class="py-2 text-right">
+            <input type="number" min="0" step="500" value="${it.price}" oninput="updateExpenseField('${divKey}', ${it.id}, 'price', this.value)" class="w-28 px-1.5 py-1 text-right text-xs rounded border border-slate-200 focus:ring-1 focus:ring-[#0B2A5B]">
+          </td>
+          <td class="py-2 text-right font-bold text-slate-800 pr-2">
+            ${formatRupiah(rowTotal)}
+          </td>
+          <td class="py-2 text-center">
+            <button type="button" onclick="removeExpenseItem('${divKey}', ${it.id})" class="text-slate-400 hover:text-red-500 p-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function addExpenseItem(divKey) {
+      const newId = Date.now();
+      expenseData[divKey].push({ id: newId, item: "Item Baru", qty: 1, price: 0 });
+      renderDivisionRows(divKey);
+      calculateAndRenderBalance();
+    }
+
+    function removeExpenseItem(divKey, id) {
+      expenseData[divKey] = expenseData[divKey].filter(it => it.id !== id);
+      renderDivisionRows(divKey);
+      calculateAndRenderBalance();
+    }
+
+    function updateExpenseField(divKey, id, field, val) {
+      const item = expenseData[divKey].find(it => it.id === id);
+      if (!item) return;
+      if (field === 'item') {
+        item.item = val;
+      } else if (field === 'qty') {
+        item.qty = Math.max(1, parseInt(val) || 1);
+      } else if (field === 'price') {
+        item.price = Math.max(0, parseInt(val) || 0);
+      }
+      
+      const subtotal = expenseData[divKey].reduce((acc, it) => acc + (it.qty * it.price), 0);
+      const subDisplay = document.getElementById(`subtotal_${divKey}`);
+      if (subDisplay) subDisplay.innerText = formatRupiah(subtotal);
+      
+      renderDivisionRows(divKey);
+      calculateAndRenderBalance();
+    }
+
+    // REAL-TIME BALANCE CALCULATION & VISUAL INDICATOR
+    function calculateAndRenderBalance() {
+      const totalIncome = incomeData.reduce((acc, curr) => acc + curr.amount, 0);
+      
+      let totalExpense = 0;
+      Object.keys(expenseData).forEach(k => {
+        totalExpense += expenseData[k].reduce((acc, it) => acc + (it.qty * it.price), 0);
+      });
+
+      const sisa = totalIncome - totalExpense;
+
+      // Update grand totals
+      document.getElementById("income_total_display").innerText = formatRupiah(totalIncome);
+      document.getElementById("expense_grand_total_display").innerText = formatRupiah(totalExpense);
+
+      const banner = document.getElementById("balance_indicator");
+      const submitBtn = document.getElementById("submit_btn");
+
+      if (sisa === 0 && totalIncome > 0) {
+        // GREEN - BALANCE PERFECT!
+        banner.className = "sticky top-16 z-20 transition-all duration-300 transform rounded-xl p-4 shadow-lg border bg-emerald-50 border-emerald-300 ring-2 ring-emerald-400/50";
+        banner.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                ✓
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs uppercase font-extrabold px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 tracking-wider">STATUS: BALANCE SEMPURNA</span>
+                  <span class="text-xs text-emerald-700 font-semibold">Sisa: Rp 0</span>
+                </div>
+                <h4 class="text-sm font-bold text-emerald-950 mt-0.5">Total Pemasukan & Pengeluaran Sesuai (${formatRupiah(totalIncome)})</h4>
+                <p class="text-xs text-emerald-700">Proposal memenuhi standar validasi BEM FEB UKRIDA dan siap diajukan ke Dekanat.</p>
+              </div>
+            </div>
+            <div class="hidden sm:block text-right">
+              <span class="text-[11px] font-bold text-emerald-800 bg-white px-3 py-1.5 rounded-lg border border-emerald-200 shadow-xs">
+                Pemasukan = Pengeluaran
+              </span>
+            </div>
+          </div>
+        `;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-40", "cursor-not-allowed");
+      } else if (sisa > 0) {
+        // AMBER / SURPLUS NOT ALLOCATED
+        banner.className = "sticky top-16 z-20 transition-all duration-300 transform rounded-xl p-4 shadow-lg border bg-amber-50 border-amber-300 ring-2 ring-amber-400/40";
+        banner.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                !
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs uppercase font-extrabold px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 tracking-wider">TIDAK BALANCE: SURPLUS</span>
+                  <span class="text-xs text-amber-800 font-bold">Surplus: +${formatRupiah(sisa)}</span>
+                </div>
+                <h4 class="text-sm font-bold text-amber-950 mt-0.5">Pemasukan melebihi pengeluaran sebesar ${formatRupiah(sisa)}</h4>
+                <p class="text-xs text-amber-700">Silakan alokasikan surplus dana ini ke pos kegiatan/perlengkapan, atau sesuaikan pemasukan hingga Sisa = Rp 0.</p>
+              </div>
+            </div>
+            <div class="hidden sm:block text-right text-xs font-bold text-amber-800">
+              Submit terkunci
+            </div>
+          </div>
+        `;
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-40", "cursor-not-allowed");
+      } else {
+        // RED - DEFICIT OVERSPEND
+        banner.className = "sticky top-16 z-20 transition-all duration-300 transform rounded-xl p-4 shadow-lg border bg-red-50 border-red-300 ring-2 ring-red-400/50";
+        banner.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                ✕
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs uppercase font-extrabold px-2 py-0.5 rounded-full bg-red-200 text-red-900 tracking-wider">TIDAK BALANCE: DEFISIT</span>
+                  <span class="text-xs text-red-800 font-bold">Defisit: -${formatRupiah(Math.abs(sisa))}</span>
+                </div>
+                <h4 class="text-sm font-bold text-red-950 mt-0.5">Pengeluaran melebihi pemasukan sebesar ${formatRupiah(Math.abs(sisa))}</h4>
+                <p class="text-xs text-red-700">Kurangi anggaran belanja divisi atau tambahkan sumber pemasukan (sponsorship/fakultas) agar tidak defisit.</p>
+              </div>
+            </div>
+            <div class="hidden sm:block text-right text-xs font-bold text-red-800">
+              Submit terkunci
+            </div>
+          </div>
+        `;
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-40", "cursor-not-allowed");
+      }
+    }
+
+    // FILE ATTACHMENTS UX
+    function renderFileList() {
+      const container = document.getElementById("file_list_container");
+      container.innerHTML = "";
+      if (uploadedFiles.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 italic">Belum ada dokumen lampiran yang diunggah.</p>`;
+        return;
+      }
+
+      uploadedFiles.forEach((f, idx) => {
+        const item = document.createElement("div");
+        item.className = "flex items-center justify-between p-2.5 rounded-lg border border-slate-200 bg-white text-xs hover:border-slate-300 transition";
+        item.innerHTML = `
+          <div class="flex items-center space-x-2.5 truncate">
+            <div class="w-7 h-7 rounded bg-blue-50 text-[#0B2A5B] flex items-center justify-center font-bold text-[10px]">
+              ${f.name.split('.').pop().toUpperCase()}
+            </div>
+            <div class="truncate">
+              <div class="font-semibold text-slate-800 truncate">${escapeHtml(f.name)}</div>
+              <div class="text-[10px] text-slate-400">${(f.size / 1024).toFixed(1)} KB</div>
+            </div>
+          </div>
+          <button type="button" onclick="removeFile(${idx})" class="text-slate-400 hover:text-red-500 p-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function handleFileSelect(evt) {
+      const files = evt.target.files;
+      for (let i = 0; i < files.length; i++) {
+        uploadedFiles.push({
+          name: files[i].name,
+          size: files[i].size,
+          type: files[i].type
+        });
+      }
+      renderFileList();
+    }
+
+    function removeFile(index) {
+      uploadedFiles.splice(index, 1);
+      renderFileList();
+    }
+
+    // PREVIEW MODAL
+    function openPreviewModal() {
+      document.getElementById("pv_event_name").innerText = document.getElementById("event_name").value;
+      document.getElementById("pv_lead_sig").innerText = document.getElementById("lead_name").value.split('(')[0].trim();
+
+      // populate income
+      const pIncomeBody = document.getElementById("pv_income_body");
+      pIncomeBody.innerHTML = "";
+      let totalInc = 0;
+      incomeData.forEach((row, idx) => {
+        totalInc += row.amount;
+        pIncomeBody.innerHTML += `
+          <tr>
+            <td class="border border-slate-400 p-1 text-center">${idx + 1}</td>
+            <td class="border border-slate-400 p-1">${escapeHtml(row.source)}</td>
+            <td class="border border-slate-400 p-1 text-right">${formatRupiah(row.amount)}</td>
+          </tr>
+        `;
+      });
+      document.getElementById("pv_income_total").innerText = formatRupiah(totalInc);
+
+      // populate expenses
+      const pExpBody = document.getElementById("pv_expense_body");
+      pExpBody.innerHTML = "";
+      let totalExp = 0;
+      let counter = 1;
+
+      divisionNames.forEach(div => {
+        const items = expenseData[div.key] || [];
+        if (items.length > 0) {
+          pExpBody.innerHTML += `
+            <tr class="bg-slate-100 font-bold">
+              <td colspan="5" class="border border-slate-400 p-1 pl-2 text-slate-800">${div.label.toUpperCase()}</td>
+            </tr>
+          `;
+          items.forEach(it => {
+            const sub = it.qty * it.price;
+            totalExp += sub;
+            pExpBody.innerHTML += `
+              <tr>
+                <td class="border border-slate-400 p-1 text-center">${counter++}</td>
+                <td class="border border-slate-400 p-1 pl-4">${escapeHtml(it.item)}</td>
+                <td class="border border-slate-400 p-1 text-center">${it.qty}</td>
+                <td class="border border-slate-400 p-1 text-right">${formatRupiah(it.price)}</td>
+                <td class="border border-slate-400 p-1 text-right font-medium">${formatRupiah(sub)}</td>
+              </tr>
+            `;
+          });
+        }
+      });
+      document.getElementById("pv_expense_total").innerText = formatRupiah(totalExp);
+
+      // balance summary in preview
+      const diff = totalInc - totalExp;
+      const bSum = document.getElementById("pv_balance_summary");
+      if (diff === 0 && totalInc > 0) {
+        bSum.className = "p-2 border border-emerald-400 bg-emerald-50 text-emerald-800 text-xs font-bold text-center mt-3";
+        bSum.innerText = "STATUS RAB: BALANCE SEMPURNA (Total Pemasukan = Total Pengeluaran = " + formatRupiah(totalInc) + ", Sisa: Rp 0)";
+      } else {
+        bSum.className = "p-2 border border-red-400 bg-red-50 text-red-800 text-xs font-bold text-center mt-3";
+        bSum.innerText = "STATUS RAB: TIDAK BALANCE (Selisih Anggaran: " + formatRupiah(diff) + ")";
+      }
+
+      document.getElementById("preview_modal").classList.remove("hidden");
+    }
+
+    function closePreviewModal() {
+      document.getElementById("preview_modal").classList.add("hidden");
+    }
+
+    function submitProposal() {
+      alert("✅ Sukses! Proposal dan RAB berhasil divalidasi balance (Sisa Rp 0) dan dikirim ke sistem audit BEM FEB UKRIDA.");
+    }
+
+    function escapeHtml(text) {
+      if (!text) return "";
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // INIT
+    renderIncome();
+    renderExpenses();
+    renderFileList();
+  </script>
+</body>
+</html>

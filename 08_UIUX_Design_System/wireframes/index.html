@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Ormawa BEM FEB UKRIDA — UI/UX Design Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0B2A5B',
+              'navy-dark': '#071C3D',
+              'navy-light': '#134080',
+              gold: '#FDB913',
+              'gold-dark': '#E5A50B',
+              'gold-light': '#FEF3D6',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <!-- HERO HEADER -->
+  <header class="bg-[#0B2A5B] text-white border-b-4 border-[#FDB913]">
+    <div class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-semibold text-[#FDB913] mb-3">
+            <span class="w-2 h-2 rounded-full bg-[#FDB913] animate-pulse"></span>
+            Design System & Component Library v1.0
+          </div>
+          <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white">
+            Portal Ormawa BEM FEB UKRIDA
+          </h1>
+          <p class="text-sm md:text-base text-blue-100 max-w-2xl mt-2 leading-relaxed">
+            Spesifikasi desain resmi, sistem token terstandarisasi, dan prototipe wireframe interaktif mobile-first untuk fungsionaris, BPH, dan civitas FEB UKRIDA.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 bg-[#071C3D] p-3 rounded-2xl border border-white/10 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-[#FDB913] text-[#071C3D] flex items-center justify-center font-black text-xl shadow">
+            FEB
+          </div>
+          <div>
+            <div class="text-xs font-bold text-white">BEM FEB UKRIDA</div>
+            <div class="text-[11px] text-slate-300">Periode 2026</div>
+            <div class="text-[10px] text-[#FDB913] font-semibold">Tanjung Duren, Jakarta Barat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN NAVIGATION & PROTOTYPE CARDS -->
+  <main class="max-w-6xl mx-auto px-4 py-10 space-y-10">
+
+    <!-- 4 CORE HIGHLIGHT TILES -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- CARD 1: FORM RAB INTERAKTIF -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg">
+              💰
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Interactive Prototype
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-[#0B2A5B] transition-colors">
+            1. Form Input RAB Interaktif & Visual Indicator
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dilengkapi real-time balance checker (Sisa Wajib Rp 0), banner visual hijau (balance) atau merah (defisit), drag-and-drop lampiran berkas, dan modal pratinjau dokumen Times New Roman 4-3-3-3 sebelum dikirim.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1">
+            <li class="flex items-center gap-1.5">✓ Dynamic row add/remove sumber pemasukan</li>
+            <li class="flex items-center gap-1.5">✓ Breakdown pengeluaran per 5 Divisi resmi</li>
+            <li class="flex items-center gap-1.5">✓ Live Print Preview modal kop surat resmi</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-100">
+          <a href="interactive_rab_form.html" class="inline-flex items-center justify-center w-full py-2.5 px-4 bg-[#0B2A5B] hover:bg-[#071C3D] text-white text-xs font-bold rounded-xl shadow transition">
+            Buka Form RAB Interaktif &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 2: MOBILE DASHBOARD (360-430PX) -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-10 h-10 rounded-xl bg-blue-100 text-[#0B2A5B] flex items-center justify-center font-bold text-lg">
+              📱
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-50 text-[#0B2A5B] border border-blue-200">
+              Mobile Responsive
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-[#0B2A5B] transition-colors">
+            2. Mobile Dashboard On-The-Go & QR Presensi
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dirancang khusus untuk layar smartphone (viewport 360px - 430px) dengan target sentuh 44px, bottom navigation dock, pelacak persetujuan SPU/LPU bertahap, dan kamera simulator QR absensi rapat.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1">
+            <li class="flex items-center gap-1.5">✓ Role switcher dinamis: BPH, Koor Sie, Anggota, Umum</li>
+            <li class="flex items-center gap-1.5">✓ Stepper approval status dokumen real-time</li>
+            <li class="flex items-center gap-1.5">✓ Fast QR Presensi bottom sheet</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-slate-100">
+          <a href="mobile_dashboard.html" class="inline-flex items-center justify-center w-full py-2.5 px-4 bg-[#0B2A5B] hover:bg-[#071C3D] text-white text-xs font-bold rounded-xl shadow transition">
+            Buka Simulator Mobile Dashboard &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DESIGN SYSTEM TOKENS & DOCUMENTATION ARCHITECTURE -->
+    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+      <div class="border-b border-slate-100 pb-4">
+        <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-md bg-[#0B2A5B]/10 text-[#0B2A5B] flex items-center justify-center text-xs font-bold">🎨</span>
+          Palet Token Resmi UKRIDA & FEB (Design Tokens)
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Tersedia dalam format standar Google DESIGN.md, Tailwind theme extend, dan W3C DTCG JSON.</p>
+      </div>
+
+      <!-- COLOR PALETTE SWATCHES -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2">
+          <div class="h-12 rounded-lg bg-[#0B2A5B] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-slate-800">UKRIDA Navy</div>
+            <div class="text-[10px] text-slate-400 font-mono">#0B2A5B</div>
+            <div class="text-[9px] text-blue-700 font-semibold">Primary Brand</div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2">
+          <div class="h-12 rounded-lg bg-[#071C3D] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-slate-800">Navy Dark</div>
+            <div class="text-[10px] text-slate-400 font-mono">#071C3D</div>
+            <div class="text-[9px] text-slate-600 font-semibold">Dark Surface</div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2">
+          <div class="h-12 rounded-lg bg-[#FDB913] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-slate-800">FEB Gold</div>
+            <div class="text-[10px] text-slate-400 font-mono">#FDB913</div>
+            <div class="text-[9px] text-amber-700 font-semibold">Accent & CTA</div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2">
+          <div class="h-12 rounded-lg bg-[#10B981] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-slate-800">Emerald Balance</div>
+            <div class="text-[10px] text-slate-400 font-mono">#10B981</div>
+            <div class="text-[9px] text-emerald-700 font-semibold">Sisa Rp 0 (Pass)</div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2">
+          <div class="h-12 rounded-lg bg-[#EF4444] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-slate-800">Rose Defisit</div>
+            <div class="text-[10px] text-slate-400 font-mono">#EF4444</div>
+            <div class="text-[9px] text-rose-700 font-semibold">Selisih Anggaran</div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2">
+          <div class="h-12 rounded-lg bg-[#0F172A] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-slate-800">Slate 900</div>
+            <div class="text-[10px] text-slate-400 font-mono">#0F172A</div>
+            <div class="text-[9px] text-slate-600 font-semibold">Heading & Typo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILE REFERENCES -->
+      <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-bold text-slate-800">Spesifikasi Lengkap untuk @lk-frontend:</div>
+          <p class="text-xs text-slate-500">Gunakan file konfigurasi token terlampir di folder <code class="bg-slate-200 px-1.5 py-0.5 rounded text-slate-800">08_UIUX_Design_System/</code>.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-[11px] font-mono bg-white px-2.5 py-1 rounded border border-slate-200 font-semibold text-slate-700">DESIGN.md</span>
+          <span class="text-[11px] font-mono bg-white px-2.5 py-1 rounded border border-slate-200 font-semibold text-slate-700">tailwind.theme.json</span>
+          <span class="text-[11px] font-mono bg-white px-2.5 py-1 rounded border border-slate-200 font-semibold text-slate-700">tokens.json</span>
+          <span class="text-[11px] font-mono bg-white px-2.5 py-1 rounded border border-slate-200 font-semibold text-slate-700">ROADMAP_UIUX.md</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    Badan Eksekutif Mahasiswa Fakultas Ekonomi & Bisnis UKRIDA &bull; Lead UI/UX &amp; Product Designer
+  </footer>
+
+</body>
+</html>

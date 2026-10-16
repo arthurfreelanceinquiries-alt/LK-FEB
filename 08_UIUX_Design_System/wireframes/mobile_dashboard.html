@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Dashboard Ormawa — BEM FEB UKRIDA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0B2A5B',
+              'navy-dark': '#071C3D',
+              'navy-light': '#134080',
+              gold: '#FDB913',
+              'gold-dark': '#E5A50B',
+              'gold-light': '#FEF3D6',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .touch-target { min-height: 44px; min-width: 44px; }
+    /* Phone frame simulation */
+    .phone-canvas {
+      width: 390px;
+      max-width: 100%;
+      height: 844px;
+      box-shadow: 0 25px 50px -12px rgba(11, 42, 91, 0.25);
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-800 min-h-screen py-4 md:py-8 flex flex-col items-center justify-center">
+
+  <!-- TOP TOOLBAR: SIMULATOR CONTROLS -->
+  <div class="mb-4 bg-slate-800 text-white px-4 py-2.5 rounded-xl flex flex-wrap items-center gap-4 text-xs shadow-lg border border-slate-700 max-w-2xl w-full justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+      <span class="font-bold text-white">Mobile Simulator:</span>
+      <span id="viewport_label" class="text-slate-300">iPhone 14 / 15 (390px)</span>
+    </div>
+    
+    <!-- ROLE SWITCHER -->
+    <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-lg border border-slate-700">
+      <span class="text-[11px] font-semibold text-slate-400 pl-1.5 pr-1">Peran:</span>
+      <button onclick="setRole('bph')" id="btn_role_bph" class="px-2.5 py-1 rounded text-[11px] font-bold transition bg-[#FDB913] text-[#071C3D]">BPH</button>
+      <button onclick="setRole('koor')" id="btn_role_koor" class="px-2.5 py-1 rounded text-[11px] font-semibold transition text-slate-300 hover:text-white">Koor Sie</button>
+      <button onclick="setRole('anggota')" id="btn_role_anggota" class="px-2.5 py-1 rounded text-[11px] font-semibold transition text-slate-300 hover:text-white">Anggota</button>
+      <button onclick="setRole('umum')" id="btn_role_umum" class="px-2.5 py-1 rounded text-[11px] font-semibold transition text-slate-300 hover:text-white">Mahasiswa Umum</button>
+    </div>
+
+    <!-- VIEWPORT SWITCHER -->
+    <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-lg border border-slate-700">
+      <button onclick="setViewport(360, 'Galaxy S / Budget Android (360px)')" class="px-2 py-1 text-[11px] text-slate-300 hover:text-white">360px</button>
+      <button onclick="setViewport(390, 'iPhone 14 / 15 (390px)')" class="px-2 py-1 text-[11px] text-[#FDB913] font-bold">390px</button>
+      <button onclick="setViewport(430, 'iPhone Pro Max (430px)')" class="px-2 py-1 text-[11px] text-slate-300 hover:text-white">430px</button>
+    </div>
+  </div>
+
+  <!-- SMARTPHONE DEVICE WRAPPER -->
+  <div id="phone_wrapper" class="phone-canvas bg-slate-50 rounded-[40px] border-[10px] border-slate-950 overflow-hidden flex flex-col relative transition-all duration-300">
+
+    <!-- IPHONE DYNAMIC ISLAND / NOTCH -->
+    <div class="h-6 bg-[#071C3D] flex items-center justify-between px-6 pt-1 select-none">
+      <span class="text-[11px] font-bold text-white">09:41</span>
+      <div class="w-20 h-3 bg-black rounded-full mx-auto"></div>
+      <div class="flex items-center space-x-1 text-white text-[10px]">
+        <span>5G</span>
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"></path></svg>
+      </div>
+    </div>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="bg-[#0B2A5B] text-white px-4 py-3 shadow-md flex items-center justify-between select-none">
+      <div class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 rounded-lg bg-[#FDB913] text-[#071C3D] font-extrabold flex items-center justify-center text-xs shadow">
+          FEB
+        </div>
+        <div>
+          <div class="text-[11px] text-blue-200 uppercase tracking-wider font-semibold">Portal Ormawa</div>
+          <div class="text-xs font-bold text-white flex items-center gap-1.5">
+            BEM FEB UKRIDA
+            <span id="role_badge" class="bg-[#FDB913] text-[#071C3D] text-[9px] font-extrabold px-1.5 py-0.5 rounded">BPH</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button onclick="toggleQRModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition touch-target" title="Scan QR">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+          </svg>
+        </button>
+        <div class="relative">
+          <button class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition touch-target">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+            </svg>
+          </button>
+          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-[#0B2A5B]"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SCROLLABLE MOBILE CONTENT AREA -->
+    <div id="mobile_scroll_content" class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-4 pb-24">
+
+      <!-- WELCOME BANNER (DYNAMIC BY ROLE) -->
+      <div id="role_greeting_card" class="bg-gradient-to-r from-[#0B2A5B] to-[#134080] rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
+        <div class="absolute -right-4 -bottom-6 w-24 h-24 bg-[#FDB913]/20 rounded-full blur-xl"></div>
+        <div class="relative z-10">
+          <span class="text-[10px] font-bold text-[#FDB913] uppercase tracking-wider">Periode 2026</span>
+          <h2 id="user_display_name" class="text-base font-extrabold text-white mt-0.5">Halo, Arthur Reezan! 👋</h2>
+          <p id="user_role_subtitle" class="text-xs text-blue-100 mt-1">Ketua BEM FEB UKRIDA (BPH)</p>
+          
+          <div class="mt-3 flex items-center gap-2">
+            <span class="inline-flex items-center gap-1 bg-white/10 text-white text-[11px] font-medium px-2.5 py-1 rounded-full border border-white/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              3 Dokumen Menunggu TTD
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DYNAMIC SECTION CONTAINER (INJECTED BY ROLE) -->
+      <div id="dynamic_role_sections" class="space-y-4">
+        <!-- Javascript renders specific cards here based on role -->
+      </div>
+
+    </div>
+
+    <!-- MOBILE STICKY BOTTOM NAVIGATION DOCK (44px TOUCH ERGONOMIC) -->
+    <nav class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-slate-200 px-3 py-2 flex items-center justify-around z-30 select-none">
+      
+      <!-- NAV 1: BERANDA -->
+      <button onclick="setActiveNav('home')" id="nav_home" class="flex flex-col items-center justify-center touch-target text-[#0B2A5B] font-bold transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        </svg>
+        <span class="text-[10px] mt-0.5">Beranda</span>
+      </button>
+
+      <!-- NAV 2: DOKUMEN / SPU -->
+      <button onclick="setActiveNav('doc')" id="nav_doc" class="flex flex-col items-center justify-center touch-target text-slate-400 hover:text-slate-600 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <span class="text-[10px] mt-0.5">SPU/LPU</span>
+      </button>
+
+      <!-- NAV 3: ELEVATED QR SCANNER ACTION -->
+      <div class="relative -top-4">
+        <button onclick="toggleQRModal()" class="w-12 h-12 rounded-full bg-[#0B2A5B] hover:bg-[#071C3D] text-[#FDB913] flex items-center justify-center shadow-lg border-2 border-white transition-transform active:scale-95 touch-target" title="Presensi QR">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- NAV 4: KAS -->
+      <button onclick="setActiveNav('kas')" id="nav_kas" class="flex flex-col items-center justify-center touch-target text-slate-400 hover:text-slate-600 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        <span class="text-[10px] mt-0.5">Kas FEB</span>
+      </button>
+
+      <!-- NAV 5: PROFIL -->
+      <button onclick="setActiveNav('profile')" id="nav_profile" class="flex flex-col items-center justify-center touch-target text-slate-400 hover:text-slate-600 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+        </svg>
+        <span class="text-[10px] mt-0.5">Akun</span>
+      </button>
+
+    </nav>
+
+    <!-- QR SCANNER BOTTOM SHEET / MODAL -->
+    <div id="qr_modal" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex flex-col justify-end">
+      <div class="bg-white rounded-t-3xl p-6 space-y-4 animate-in slide-in-from-bottom duration-300">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-ping"></span>
+            <h4 class="text-sm font-bold text-slate-800">Presensi Rapat Ormawa</h4>
+          </div>
+          <button onclick="toggleQRModal()" class="text-slate-400 hover:text-slate-600 p-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- CAMERA VIEWFINDER SIMULATOR -->
+        <div class="bg-slate-900 rounded-2xl h-60 relative overflow-hidden flex items-center justify-center border-2 border-[#FDB913]">
+          <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+          
+          <!-- SCANNING LASER EFFECT -->
+          <div class="absolute inset-x-8 top-1/2 h-0.5 bg-gradient-to-r from-transparent via-[#FDB913] to-transparent animate-pulse shadow-[0_0_12px_#FDB913]"></div>
+          
+          <div class="w-40 h-40 border-2 border-dashed border-white/50 rounded-xl flex flex-col items-center justify-center text-white/70 p-4 text-center">
+            <svg class="w-8 h-8 text-[#FDB913] mb-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+            <span class="text-[11px] font-semibold">Arahkan kamera ke QR Code Presensi Rapat BEM</span>
+          </div>
+        </div>
+
+        <button onclick="simulateCheckInSuccess()" class="w-full py-3 bg-[#0B2A5B] hover:bg-[#071C3D] text-white text-xs font-bold rounded-xl shadow-md transition touch-target flex items-center justify-center gap-2">
+          <span>Simulasi Presensi Berhasil</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- HOME BAR INDICATOR -->
+    <div class="h-4 bg-white flex items-center justify-center">
+      <div class="w-32 h-1 bg-slate-300 rounded-full"></div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentRole = 'bph';
+
+    const roleConfigs = {
+      bph: {
+        name: "Arthur Reezan",
+        nim: "312023002",
+        role: "Ketua BEM FEB UKRIDA",
+        badge: "BPH Tier 1",
+        badgeClass: "bg-[#FDB913] text-[#071C3D]"
+      },
+      koor: {
+        name: "Stevanie",
+        nim: "312023093",
+        role: "Koordinator Sie Acara",
+        badge: "Koor Sie Tier 2",
+        badgeClass: "bg-blue-100 text-[#0B2A5B]"
+      },
+      anggota: {
+        name: "Princess Auralia",
+        nim: "322024025",
+        role: "Anggota Fungsionaris",
+        badge: "Anggota Tier 3",
+        badgeClass: "bg-emerald-100 text-emerald-800"
+      },
+      umum: {
+        name: "Mahasiswa FEB",
+        nim: "Akun Tamu",
+        role: "Civitas FEB UKRIDA",
+        badge: "Mahasiswa Umum",
+        badgeClass: "bg-slate-200 text-slate-700"
+      }
+    };
+
+    function setRole(role) {
+      currentRole = role;
+      
+      // Update top switcher active states
+      ['bph', 'koor', 'anggota', 'umum'].forEach(r => {
+        const btn = document.getElementById(`btn_role_${r}`);
+        if (r === role) {
+          btn.className = "px-2.5 py-1 rounded text-[11px] font-bold transition bg-[#FDB913] text-[#071C3D]";
+        } else {
+          btn.className = "px-2.5 py-1 rounded text-[11px] font-semibold transition text-slate-300 hover:text-white";
+        }
+      });
+
+      const cfg = roleConfigs[role];
+      document.getElementById("user_display_name").innerText = `Halo, ${cfg.name}! 👋`;
+      document.getElementById("user_role_subtitle").innerText = `${cfg.role} (${cfg.nim})`;
+      const rBadge = document.getElementById("role_badge");
+      rBadge.innerText = cfg.badge;
+      rBadge.className = `text-[9px] font-extrabold px-1.5 py-0.5 rounded ${cfg.badgeClass}`;
+
+      renderRoleSections(role);
+    }
+
+    function renderRoleSections(role) {
+      const container = document.getElementById("dynamic_role_sections");
+      container.innerHTML = "";
+
+      if (role === 'bph') {
+        // TIER 1: BPH OVERSIGHT
+        container.innerHTML = `
+          <!-- 4-GRID QUICK STATS -->
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+              <span class="text-[10px] text-slate-500 font-semibold uppercase">SPU Menunggu</span>
+              <div class="text-lg font-extrabold text-[#0B2A5B] mt-0.5">3 Berkas</div>
+              <span class="text-[10px] text-amber-600 font-bold">Butuh TTD Dekanat</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+              <span class="text-[10px] text-slate-500 font-semibold uppercase">Kas BEM FEB</span>
+              <div class="text-lg font-extrabold text-emerald-600 mt-0.5">Rp 18.450.000</div>
+              <span class="text-[10px] text-slate-400">Balance Terverifikasi</span>
+            </div>
+          </div>
+
+          <!-- DOCUMENT APPROVAL PIPELINE -->
+          <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <h3 class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                Persetujuan SPU/LPU On-The-Go
+              </h3>
+              <span class="text-[10px] font-semibold text-[#0B2A5B]">Lihat Semua</span>
+            </div>
+
+            <!-- CARD SPU 1 -->
+            <div class="p-3 rounded-lg border border-slate-100 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">SPU ACARA</span>
+                <span class="text-[10px] text-slate-400">Hari ini, 08:30</span>
+              </div>
+              <div class="font-bold text-xs text-slate-800">LKMM Tingkat II FEB 2026</div>
+              <p class="text-[11px] text-slate-500">Pengajuan Izin Ruang Auditorium & Peminjaman Sound System</p>
+              
+              <!-- STEPPER -->
+              <div class="pt-2 border-t border-slate-200">
+                <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 mb-1">
+                  <span class="text-emerald-600">Draft ✓</span>
+                  <span class="text-emerald-600">BPH Review ✓</span>
+                  <span class="text-[#0B2A5B] font-extrabold">Dekanat ⏳</span>
+                  <span>Disetujui</span>
+                </div>
+                <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-gradient-to-r from-emerald-500 to-[#0B2A5B] h-full w-3/4"></div>
+                </div>
+              </div>
+
+              <div class="pt-2 flex gap-2">
+                <a href="interactive_rab_form.html" class="flex-1 py-1.5 bg-[#0B2A5B] text-white text-center text-[10px] font-bold rounded-lg touch-target flex items-center justify-center">
+                  Review & ACC
+                </a>
+                <button class="px-3 py-1.5 border border-slate-300 text-slate-700 text-[10px] font-semibold rounded-lg touch-target">
+                  Unduh SPU
+                </button>
+              </div>
+            </div>
+
+            <!-- CARD SPU 2 -->
+            <div class="p-3 rounded-lg border border-slate-100 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">PROPOSAL</span>
+                <span class="text-[10px] text-slate-400">Kemarin</span>
+              </div>
+              <div class="font-bold text-xs text-slate-800">Seminar Nasional & Career Talk FEB</div>
+              <p class="text-[11px] text-slate-500">RAB Total Rp 12.000.000 (Balance Rp 0)</p>
+              
+              <div class="pt-2 flex items-center justify-between text-[10px]">
+                <span class="text-emerald-600 font-bold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Disetujui Wakil Dekan
+                </span>
+                <span class="text-slate-400 font-mono">No: 042/BEM-FEB/X/2026</span>
+              </div>
+            </div>
+
+          </div>
+        `;
+      } else if (role === 'koor') {
+        // TIER 2: KOOR SIE
+        container.innerHTML = `
+          <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <h3 class="text-xs font-bold text-slate-900">Tugas Sie Acara (LKMM 2026)</h3>
+              <span class="text-[10px] bg-blue-50 text-blue-800 font-bold px-2 py-0.5 rounded-full">4 Aktif</span>
+            </div>
+
+            <div class="space-y-2">
+              <div class="p-2.5 rounded-lg border border-slate-200 flex items-start gap-2.5">
+                <input type="checkbox" class="mt-0.5 rounded text-[#0B2A5B]">
+                <div class="flex-1">
+                  <div class="text-xs font-bold text-slate-800">Finalisasi Rundown Hari Ke-2</div>
+                  <div class="text-[10px] text-slate-500">Assign ke: Stevanie & 2 staf</div>
+                  <div class="text-[10px] text-amber-600 font-semibold mt-1">Deadline: Besok, 18:00</div>
+                </div>
+              </div>
+              <div class="p-2.5 rounded-lg border border-slate-200 flex items-start gap-2.5">
+                <input type="checkbox" checked class="mt-0.5 rounded text-[#0B2A5B]">
+                <div class="flex-1 line-through text-slate-400">
+                  <div class="text-xs font-medium">Briefing MC & Moderator</div>
+                  <div class="text-[10px]">Selesai divalidasi BPH</div>
+                </div>
+              </div>
+            </div>
+
+            <a href="interactive_rab_form.html" class="block w-full py-2 bg-[#0B2A5B] text-white text-center text-xs font-bold rounded-lg">
+              + Input Kebutuhan Anggaran Sie
+            </a>
+          </div>
+        `;
+      } else if (role === 'anggota') {
+        // TIER 3: ANGGOTA FOCUS
+        container.innerHTML = `
+          <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm space-y-3">
+            <h3 class="text-xs font-bold text-slate-900 border-b border-slate-100 pb-2">Status Presensi & Kas Saya</h3>
+            
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between">
+              <div>
+                <div class="text-[10px] font-bold text-emerald-800 uppercase">Presensi Rapat BEM</div>
+                <div class="text-sm font-extrabold text-emerald-900 mt-0.5">92% Kehadiran</div>
+                <div class="text-[10px] text-emerald-700">11 dari 12 Pertemuan Terpenuhi</div>
+              </div>
+              <button onclick="toggleQRModal()" class="px-3 py-1.5 bg-[#0B2A5B] text-white text-[10px] font-bold rounded-lg">
+                Scan Absen
+              </button>
+            </div>
+
+            <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between">
+              <div>
+                <div class="text-[10px] font-bold text-blue-800 uppercase">Iuran Kas Fungsionaris</div>
+                <div class="text-sm font-extrabold text-[#0B2A5B] mt-0.5">Lunas s/d Oktober</div>
+                <div class="text-[10px] text-blue-600">Rp 10.000 / bulan</div>
+              </div>
+              <span class="text-[10px] font-bold bg-white text-emerald-700 px-2 py-1 rounded border border-emerald-200">
+                LUNAS ✓
+              </span>
+            </div>
+          </div>
+        `;
+      } else {
+        // TIER 4: MAHASISWA UMUM
+        container.innerHTML = `
+          <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm space-y-3">
+            <h3 class="text-xs font-bold text-slate-900 border-b border-slate-100 pb-2">Verifikasi Dokumen & Agenda Terbuka</h3>
+            
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">TERVERIFIKASI RESMI</span>
+                <span class="text-[10px] text-slate-400">Cek Keaslian</span>
+              </div>
+              <div class="font-bold text-xs text-slate-800">Proposal LKMM Tingkat II FEB UKRIDA</div>
+              <div class="text-[10px] text-slate-500 font-mono">Kode Hash: UKR-FEB-2026-089A</div>
+              <p class="text-[11px] text-slate-600">Dokumen sah disetujui Dekan FEB UKRIDA Dr. Diana Frederica.</p>
+            </div>
+
+            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+              <div class="text-[10px] font-bold text-amber-800 uppercase">Aspirasi Mahasiswa FEB</div>
+              <p class="text-xs text-slate-700 mt-1">Sampaikan masukan & program kerja yang kamu inginkan untuk FEB UKRIDA.</p>
+              <button class="mt-2 w-full py-1.5 bg-[#0B2A5B] text-white text-xs font-bold rounded-lg">
+                Kirim Aspirasi Anonim
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function setViewport(width, label) {
+      const phone = document.getElementById("phone_wrapper");
+      phone.style.width = width + "px";
+      document.getElementById("viewport_label").innerText = label;
+    }
+
+    function toggleQRModal() {
+      const modal = document.getElementById("qr_modal");
+      modal.classList.toggle("hidden");
+    }
+
+    function simulateCheckInSuccess() {
+      toggleQRModal();
+      alert("🎉 Berhasil! Kehadiran Rapat BEM FEB UKRIDA telah dicatat ke Supabase.");
+    }
+
+    function setActiveNav(navKey) {
+      ['home', 'doc', 'kas', 'profile'].forEach(k => {
+        const btn = document.getElementById(`nav_${k}`);
+        if (!btn) return;
+        if (k === navKey) {
+          btn.className = "flex flex-col items-center justify-center touch-target text-[#0B2A5B] font-bold transition";
+        } else {
+          btn.className = "flex flex-col items-center justify-center touch-target text-slate-400 hover:text-slate-600 transition";
+        }
+      });
+    }
+
+    // INITIAL RENDER
+    setRole('bph');
+  </script>
+</body>
+</html>
