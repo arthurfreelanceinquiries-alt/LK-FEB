@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "description": "Konfigurasi Telegram Executive Remote BEM FEB UKRIDA. Isi bot_token dari @BotFather dan allowed_chat_ids dengan chat ID Arthur/Sekretariat.",
+  "bot_token": "",
+  "allowed_chat_ids": [],
+  "owner_name": "Arthur Reezan",
+  "owner_title": "Ketua BEM FEB UKRIDA",
+  "default_timezone": "Asia/Jakarta",
+  "poll_timeout_seconds": 25,
+  "notulensi_ai_timeout_seconds": 300,
+  "notulensi_ai_enabled": true,
+  "send_typing_indicator": true,
+  "commands": {
+    "menu": [
+      {
+        "command": "start",
+        "description": "Status sistem BEM FEB & menu perintah"
+      },
+      {
+        "command": "rapat",
+        "description": "Catat rapat: /rapat waktu | tempat | agenda"
+      },
+      {
+        "command": "reminder",
+        "description": "Simpan reminder: /reminder waktu | isi"
+      },
+      {
+        "command": "akun",
+        "description": "Lihat akun Antigravity & statusnya"
+      },
+      {
+        "command": "akun_switch",
+        "description": "Ganti akun Antigravity: /akun_switch <id>"
+      },
+      {
+        "command": "notulensi",
+        "description": "Lihat notulensi terbaru"
+      },
+      {
+        "command": "status",
+        "description": "Status ringkas sistem bridge"
+      }
+    ]
+  },
+  "setup_notes": [
+    "1. Buat bot baru di @BotFather lalu salin token ke field bot_token.",
+    "2. Kirim /start ke bot, lalu tambahkan chat ID Anda ke allowed_chat_ids.",
+    "3. Restart bridge: python3 start_bridge.py",
+    "4. Token juga dapat diberikan lewat environment LK_FEB_TELEGRAM_BOT_TOKEN."
+  ]
+}

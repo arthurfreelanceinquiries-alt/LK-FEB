@@ -1,0 +1,10 @@
+{
+  "status": "offline",
+  "pid": 283156,
+  "username": null,
+  "last_poll": "2026-11-03T09:34:43+07:00",
+  "last_error": "bot_token belum diisi atau masih placeholder di /home/arthurreezan/LK-FEB/bridge/config/telegram_config.json",
+  "started_at": "2026-11-03T09:34:43+07:00",
+  "last_update_id": null,
+  "allowed_chat_count": 0
+}
