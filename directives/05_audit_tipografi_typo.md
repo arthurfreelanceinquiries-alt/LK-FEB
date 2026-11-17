@@ -22,22 +22,25 @@ Tandai setiap item: ✅ Benar | ⚠️ Perlu perbaikan | ❌ Salah/tidak ada
 
 ### 📐 A. Margin (jika bisa diverifikasi dari file Word/Google Docs)
 
-- [ ] **Atas:** 2,5 cm
-- [ ] **Bawah:** 2,5 cm
-- [ ] **Kiri:** 3,0 cm *(lebih lebar untuk binding)*
-- [ ] **Kanan:** 2,5 cm
+- [ ] **Kiri:** 4,0 cm *(binding margin resmi kemahasiswaan)*
+- [ ] **Atas:** 3,0 cm
+- [ ] **Kanan:** 3,0 cm
+- [ ] **Bawah:** 3,0 cm
+- [ ] Kertas: **A4** (21,0 × 29,7 cm)
 - [ ] Tidak ada teks yang terpotong di tepi halaman
 
-> *Catatan: Jika hanya punya file Markdown/teks, item ini dilewati (N/A).*
+> *Catatan: Margin baku LK FEB UKRIDA adalah standar 4-3-3-3 (referensi autentik: Google Docs PKKMB & LKMM II 2026). Jika hanya punya file Markdown/teks, item ini dinilai N/A.*
 
 ---
 
 ### 🔤 B. Font & Ukuran
 
-- [ ] Font utama: **Times New Roman** (bukan Arial, Calibri, dll)
-- [ ] Ukuran body text: **12 pt**
-- [ ] Ukuran cover: **14 pt Bold**
+- [ ] Font utama: **Times New Roman** (100% konsisten, bukan Arial, Calibri, dll)
+- [ ] Ukuran body text / isi narasi: **12 pt**
+- [ ] Ukuran cover proposal resmi: **12 pt Bold** (atau 14 pt Bold untuk judul display utama)
+- [ ] Ukuran tabel (rundown/anggaran): **10,5 – 11 pt** (agar proporsional dan tidak terpotong)
 - [ ] Ukuran header tabel: **11 pt Bold**
+- [ ] **Warna teks:** Hitam murni (`#000000`)
 - [ ] **Tidak ada perubahan font mendadak** di tengah paragraf
 - [ ] **Tidak ada teks highlight warna** yang tertinggal (sisa edit)
 - [ ] Judul bab: Bold
@@ -80,17 +83,19 @@ Tandai setiap item: ✅ Benar | ⚠️ Perlu perbaikan | ❌ Salah/tidak ada
 ### 🔍 F. Typo & Kesalahan Penulisan
 
 #### F1. Nama Pejabat & Gelar (KRITIS — 0 toleransi)
-- [ ] Dekan: `Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A` *(ada ® di CFP)*
+- [ ] Dekan: `Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A` *(tanpa koma setelah Frederica, ada ® di CFP)*
 - [ ] Wakil Dekan: `Dr. Daniel Widjaja, S.E., M.M., CSCU, CEAP`
 - [ ] Ketua BEM: `Arthur Reezan` — NIM `312023002`
 - [ ] Wakil Ketua: `Princess Auralia Barus` — NIM `322024025`
+- [ ] Lembar Pengesahan / TTD: Nama penandatangan **Bold + Underline** (`<u>Nama Lengkap</u>`), penataan sejajar
 - [ ] Semua gelar akademik ditulis lengkap dan urut
 
-#### F2. Nama Organisasi
+#### F2. Nama Organisasi & Nomor Surat
 - [ ] `BEM FEB UKRIDA` (bukan BEM UKRIDA / BEM FEB saja)
 - [ ] `Fakultas Ekonomi dan Bisnis` (bukan "Ekonomi Bisnis" tanpa "dan")
 - [ ] `Universitas Kristen Krida Wacana` (jika ditulis panjang)
 - [ ] `Badan Eksekutif Mahasiswa` (jika ditulis panjang, huruf kapital awal)
+- [ ] Format nomor surat resmi: `[No]/[Kode-Acara]/BEM-FEB-UKRIDA/[Bulan-Romawi]/[Tahun]`
 
 #### F3. Format Angka & Mata Uang
 - [ ] Semua nominal: `Rp. X.XXX.XXX` — ada titik setelah Rp, titik ribuan

@@ -1,6 +1,9 @@
 # 📊 PORTAL LK-FEB — Master Data Mapping
 **Pemetaan Data dari `bem_feb_data_master.xlsx` ke Supabase Schema**
 
+> [!IMPORTANT]
+> **Batas Repositori Kanonis (18 November 2026):** File spreadsheet master `bem_feb_data_master.xlsx` tetap diarsipkan di repositori `LK-FEB`, sedangkan implementasi skema Supabase aktif, kebijakan `ENABLE + FORCE RLS` (36/36 SQL authorization tests PASS), serta pengecekan keanggotaan aktif dikelola di repositori terpisah **`portal-bem-feb-ukrida`**. Jangan menjalankan `supabase_schema.sql` legacy sebagai jalur migrasi produksi.
+
 ---
 
 ## 📋 Overview
@@ -284,5 +287,5 @@ for index, row in finance_long.iterrows():
 ---
 
 **Dokumen ini dirawat oleh @lk-arsiparis sebagai bagian dari Technical Documentation Portal LK-FEB.**  
-**Last Updated**: 14 Oktober 2026  
-**Status**: 🟡 Draft (Menunggu input @lk-formatter untuk schema finalization)
+**Last Updated**: 18 November 2026  
+**Status**: 🟢 Referensi Mapping Master Excel (Implementasi schema & RLS aktif berada di repo `portal-bem-feb-ukrida`)

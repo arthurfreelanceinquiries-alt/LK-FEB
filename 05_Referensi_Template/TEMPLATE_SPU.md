@@ -39,7 +39,7 @@ Hormat kami,
 
 &nbsp;
 
-**[Nama Ketua Pelaksana]** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Arthur Reezan**  
+**<u>[Nama Ketua Pelaksana]</u>** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<u>Arthur Reezan</u>**  
 Ketua Pelaksana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ketua BEM FEB UKRIDA  
 ([NIM]) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (312023002)
 
@@ -49,5 +49,5 @@ Ketua Pelaksana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 
 &nbsp;
 
-**Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A**  
+**<u>Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A</u>**  
 Dekan Fakultas Ekonomi dan Bisnis UKRIDA

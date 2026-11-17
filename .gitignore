@@ -28,3 +28,5 @@ desktop.ini
 *.log
 scratch/
 
+# Local cross-harness active task
+.agent/CURRENT_TASK.md

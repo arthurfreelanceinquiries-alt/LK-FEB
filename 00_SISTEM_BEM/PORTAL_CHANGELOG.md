@@ -1,6 +1,12 @@
 # 📜 PORTAL LK-FEB — Project Changelog
 **Dokumentasi Perjalanan Rilis & Milestone Portal LK-FEB**
 
+> [!IMPORTANT]
+> **Status Kanonis (18 November 2026):** Source code dan bukti rilis Portal LK-FEB dikelola di repositori terpisah **`portal-bem-feb-ukrida`** (`https://portal-lk-feb.vercel.app`).
+> - **Fase Aktif:** **Protected Technical Release Active; Member Launch Blocked.**
+> - **Kualifikasi Teknis Terverifikasi:** Unit `18/18`, Offline Browser `370/370`, SQL Authorization `36/36`, Live Auth/Data API `26/26`, Hosted Staging & Production `8/8`, Anonymous Denials `6/6`.
+> - **Blocker Peluncuran Anggota:** Menunggu verifikasi pengiriman SMTP dan human owner login/PKCE di repositori `portal-bem-feb-ukrida`.
+
 Semua perubahan, penambahan fitur, perbaikan bug, dan migrasi arsitektur pada Portal LK-FEB dicatat secara kronologis dalam dokumen ini mengikuti prinsip semantic versioning dan roadmap fase proyek.
 
 ---
@@ -23,7 +29,7 @@ Phase 3: Production Deployment
 ---
 
 ## 🚀 Phase 0: Initial MVP Build
-- **Status**: 🟡 In Progress (Sedang Berjalan)
+- **Status**: 🟢 Completed (Selesai di `LK-FEB`, Oktober 2026)
 - **Target Periode**: Oktober 2026 – Desember 2026
 - **Fokus Utama**: Fondasi sistem, ekstraksi script otomatisasi lokal, dan perancangan arsitektur.
 
@@ -42,7 +48,7 @@ Phase 3: Production Deployment
   - `00_SISTEM_BEM/PORTAL_BUG_TRACKING.md`
   - `00_SISTEM_BEM/PORTAL_CHANGELOG.md`
   - `00_SISTEM_BEM/PORTAL_DATA_MAPPING.md`
-- [ ] Prototype dashboard internal berbasis Markdown / Local Web
+- [x] Pemisahan aplikasi web ke repositori khusus `portal-bem-feb-ukrida` (React 19, Vite 8, Supabase Auth/RLS, Tailwind CSS) & kualifikasi *Protected Technical Release* di `https://portal-lk-feb.vercel.app`
 
 ---
 

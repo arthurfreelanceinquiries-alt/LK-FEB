@@ -1,6 +1,16 @@
 # PORTAL LK-FEB — Technical Documentation
 **Portal Manajemen Pengetahuan & Administrasi BEM FEB UKRIDA**
 
+> [!IMPORTANT]
+> **Batas Repositori Kanonis (Diperbarui 18 November 2026):**
+> - **Source Code & Bukti Rilis Aktif:** Berada di repositori terpisah **`portal-bem-feb-ukrida`** (Production: `https://portal-lk-feb.vercel.app`). Repositori `LK-FEB` ini khusus menjadi repositori kanonis untuk dokumen administrasi (Proposal, SPU, LPU/LPJ, template, audit, RAB, dan arsip).
+> - **Status Rilis Aktual:** **Protected Technical Release Active; Member Launch Blocked.**
+>   - **Stack Produksi Aktual:** React 19, Vite 8, Supabase JS (Auth & PostgreSQL dengan `ENABLE + FORCE RLS`), Tailwind CSS, Playwright, Oxlint.
+>   - **Bukti Verifikasi Teknis:** Unit `18/18`, Offline Browser `370/370`, SQL Authorization `36/36`, Live Auth/Data API `26/26`, Hosted Staging & Production `8/8`, Anonymous Denials `6/6`.
+>   - **Proteksi & Gate Aktif:** Vercel Authentication, Supabase Auth, pengecekan keanggotaan aktif (`active membership`), `ENABLE + FORCE RLS` (public signup ditutup; magic link tidak membuat user baru).
+>   - **Blocker Peluncuran Anggota:** Menunggu verifikasi pengiriman SMTP dan human owner login/PKCE di repositori `portal-bem-feb-ukrida`. Jangan menjalankan `supabase_schema.sql` legacy atau melemahkan proteksi/RLS.
+> - Catatan di bawah ini dipertahankan sebagai referensi desain awal (Phase 0 Blueprint).
+
 ---
 
 ## 📋 Table of Contents
@@ -24,13 +34,19 @@ Portal LK-FEB adalah sistem manajemen pengetahuan berbasis web yang dirancang un
 - **Multi-Agent Collaboration**: Interface untuk koordinasi antar AI agents (lk-drafter, lk-auditor, lk-formatter, lk-orchestrator)
 - **Real-time Dashboard**: Visualisasi status acara, timeline proyek, dan resource monitoring
 
-**Current Status**: 🟡 Phase 0 - Initial MVP Build (Redesign in Progress)
+**Current Status**: 🟡 Protected Technical Release Active di repo `portal-bem-feb-ukrida` (`https://portal-lk-feb.vercel.app`); Member Launch Blocked oleh gate verifikasi SMTP & human owner login/PKCE.
 
 ---
 
 ## 2. Tech Stack
 
-### Frontend
+### Canonical Production Stack (`portal-bem-feb-ukrida`)
+- **Frontend & Build**: React 19, Vite 8, Tailwind CSS
+- **Database & Auth**: Supabase JS (Supabase Auth + PostgreSQL dengan `ENABLE + FORCE RLS`, active membership check, closed public signup)
+- **Quality & Testing**: Playwright (E2E/Browser), Oxlint, Unit & SQL Authorization suites
+- **Hosting**: Vercel (`https://portal-lk-feb.vercel.app` dengan Vercel Authentication protection)
+
+### Initial Phase 0 Draft Stack (Historical Reference)
 - **Framework**: TBD (Streamlit / React / Next.js - pending lk-formatter decision)
 - **Styling**: TailwindCSS / Ant Design
 - **State Management**: TBD (Context API / Zustand / Redux)
@@ -483,10 +499,11 @@ pytest tests/ -v --cov=app
 **Project Manager**: @lk-orchestrator (Coordination)  
 **Documentation**: @lk-arsiparis (Knowledge Base)
 
-**GitHub Repository**: [arthurfreelanceinquiries-alt/LK-FEB](https://github.com/arthurfreelanceinquiries-alt/LK-FEB)
+**Admin/Docs Repository**: [arthurfreelanceinquiries-alt/LK-FEB](https://github.com/arthurfreelanceinquiries-alt/LK-FEB)  
+**Application Source Repository**: `portal-bem-feb-ukrida` (Production: `https://portal-lk-feb.vercel.app`)
 
 ---
 
-**Last Updated**: 14 Oktober 2026  
-**Document Version**: 1.0.0  
+**Last Updated**: 18 November 2026  
+**Document Version**: 1.1.0  
 **Maintained by**: @lk-arsiparis

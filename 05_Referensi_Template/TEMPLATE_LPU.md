@@ -134,13 +134,23 @@ Demikian Laporan Pertanggungjawaban Umum (LPU) Kegiatan [nama acara] FEB UKRIDA 
 
 Jakarta, [tanggal lengkap]
 
-Hormat kami,
+Hormat kami,  
+**Badan Eksekutif Mahasiswa**  
+**Fakultas Ekonomi dan Bisnis UKRIDA**
 
-**[Nama Ketua Pelaksana]** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Arthur Reezan**  
+&nbsp;
+
+&nbsp;
+
+**<u>[Nama Ketua Pelaksana]</u>** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<u>Arthur Reezan</u>**  
 Ketua Pelaksana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ketua BEM FEB UKRIDA  
 ([NIM]) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (312023002)
 
-**Mengetahui,**
+**Mengetahui,**  
+**Dekan Fakultas Ekonomi dan Bisnis UKRIDA**
 
-**Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A**  
-Dekan Fakultas Ekonomi dan Bisnis UKRIDA
+&nbsp;
+
+&nbsp;
+
+**<u>Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A</u>**

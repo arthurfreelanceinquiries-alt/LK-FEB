@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+# Manage a local active task without an AI call.
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+TASK = Path(os.environ.get("AGENT_TASK_FILE", ROOT / ".agent/CURRENT_TASK.md"))
+QUEUE = Path(os.environ.get("AGENT_TASK_QUEUE", ROOT / "docs/agent/OPEN_TASKS.md"))
+ACTIVE_STATUSES = {"ready", "in_progress", "paused"}
+
+
+def run(*command: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=False)
+
+
+def current_branch() -> str:
+    result = run("git", "branch", "--show-current")
+    return result.stdout.strip() or "detached"
+
+
+def load_issue(number: str) -> dict:
+    result = run("gh", "issue", "view", number, "--json", "number,title,body,url,state")
+    if result.returncode:
+        raise SystemExit(f"Unable to read GitHub Issue #{number}: {result.stderr.strip() or result.stdout.strip()}")
+    value = json.loads(result.stdout)
+    if value.get("state") != "OPEN":
+        raise SystemExit(f"Issue #{number} is not open; refusing to make it the active task")
+    return value
+
+
+def render(title: str, objective: str, issue_ref: str, scopes: list[str], constraints: list[str], queue_entry: str = "") -> str:
+    scope_text = "\n".join(f"- {value}" for value in scopes) or "- Determine the smallest relevant file set before editing."
+    constraint_text = "\n".join(f"- {value}" for value in constraints) or "- Preserve unrelated dirty work.\n- Do not deploy, publish, commit, or push without explicit approval."
+    parts = [
+        "# Current Task", "", "Status: ready", f"Issue: {issue_ref}",
+        f"Branch: {current_branch()}", f"Title: {title}", f"Queue: {queue_entry or 'none'}", "", "## Objective", "",
+        objective.strip(), "", "## Scope", "", scope_text, "", "## Constraints", "",
+        constraint_text, "", "## Done When", "",
+        "- The objective is satisfied with a minimum viable diff.",
+        "- Applicable tests pass with actual output.",
+        "- Changed files, results, blockers, and approvals are reported.", "",
+    ]
+    return "\n".join(parts)
+
+
+def write_task(value: str) -> None:
+    TASK.parent.mkdir(parents=True, exist_ok=True)
+    temporary = TASK.with_suffix(".md.new")
+    temporary.write_text(value)
+    os.replace(temporary, TASK)
+
+
+def task_field(name: str) -> str:
+    if not TASK.exists():
+        return ""
+    prefix = f"{name}:"
+    for line in TASK.read_text().splitlines():
+        if line.startswith(prefix):
+            return line.removeprefix(prefix).strip()
+    return ""
+
+
+def task_objective() -> str:
+    if not TASK.exists():
+        return ""
+    lines = TASK.read_text().splitlines()
+    try:
+        start = lines.index("## Objective") + 1
+    except ValueError:
+        return ""
+    values = []
+    for line in lines[start:]:
+        if line.startswith("## "):
+            break
+        if line.strip():
+            values.append(line.strip())
+    return " ".join(values)
+
+
+def change_status(status: str) -> None:
+    if not TASK.exists():
+        raise SystemExit("No active task")
+    lines = TASK.read_text().splitlines()
+    for index, line in enumerate(lines):
+        if line.startswith("Status:"):
+            lines[index] = f"Status: {status}"
+            write_task("\n".join(lines) + "\n")
+            return
+    raise SystemExit("CURRENT_TASK.md has no Status field")
+
+
+def select_next() -> None:
+    if not QUEUE.exists():
+        raise SystemExit(f"Task queue not found: {QUEUE}")
+    for line in QUEUE.read_text().splitlines():
+        if line.startswith("- [READY] "):
+            objective = line.removeprefix("- [READY] ").strip()
+            write_task(render(objective, objective, "queue", [], [], objective))
+            print(TASK.read_text())
+            return
+    raise SystemExit("No [READY] task. Ask Arthur for the missing decision, approval, Issue number, or objective.")
+
+
+def complete_queue_entry() -> None:
+    entry = task_field("Queue")
+    if not entry or entry == "none":
+        return
+    old = f"- [READY] {entry}"
+    lines = QUEUE.read_text().splitlines()
+    try:
+        index = lines.index(old)
+    except ValueError:
+        raise SystemExit(f"Active queue entry is no longer [READY]: {entry}")
+    lines[index] = f"- [DONE] {entry}"
+    temporary = QUEUE.with_suffix(".md.new")
+    temporary.write_text("\n".join(lines) + "\n")
+    os.replace(temporary, QUEUE)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Manage the local cross-harness task")
+    sub = parser.add_subparsers(dest="command", required=True)
+    start = sub.add_parser("start")
+    start.add_argument("target", nargs="?", help="Open GitHub Issue number or task title")
+    start.add_argument("--title")
+    start.add_argument("--scope", action="append", default=[])
+    start.add_argument("--constraint", action="append", default=[])
+    sub.add_parser("status")
+    sub.add_parser("next")
+    sub.add_parser("resume")
+    sub.add_parser("pause")
+    sub.add_parser("done")
+    sub.add_parser("clear")
+    args = parser.parse_args()
+
+    if args.command == "start":
+        if task_field("Status") in ACTIVE_STATUSES and task_objective():
+            raise SystemExit("An active task already exists; use resume, done, or clear before replacing it")
+        if args.target and args.target.isdigit() and not args.title:
+            value = load_issue(args.target)
+            issue_ref = f'#{value["number"]} — {value["url"]}'
+            write_task(render(value["title"], value.get("body") or value["title"], issue_ref, args.scope, args.constraint))
+        else:
+            title = args.title or args.target
+            if not title:
+                raise SystemExit("Use: ./task start <issue-number> OR ./task start --title 'objective'")
+            write_task(render(title, title, "local", args.scope, args.constraint))
+        print(TASK.read_text())
+    elif args.command == "status":
+        print(TASK.read_text() if TASK.exists() else "No active task. Run ./task next, ./task start <issue-number>, or ./task start --title '...'.")
+    elif args.command == "next":
+        if task_field("Status") in ACTIVE_STATUSES and task_objective():
+            raise SystemExit("An active task already exists; use ./task resume, done, or clear")
+        select_next()
+    elif args.command == "resume":
+        if task_field("Status") not in ACTIVE_STATUSES or not task_objective():
+            raise SystemExit("No resumable task with an objective; use ./task next or start")
+        expected_branch = task_field("Branch")
+        if expected_branch and expected_branch != current_branch():
+            raise SystemExit(f"Task branch mismatch: expected {expected_branch}, current {current_branch()}; do not auto-checkout")
+        change_status("in_progress")
+        print(TASK.read_text())
+    elif args.command == "pause":
+        if task_field("Status") not in ACTIVE_STATUSES:
+            raise SystemExit("No active task to pause")
+        change_status("paused")
+        print(f"Task marked paused: {TASK}")
+    elif args.command == "done":
+        if task_field("Status") not in ACTIVE_STATUSES:
+            raise SystemExit("No active task to complete")
+        complete_queue_entry()
+        change_status("done")
+        print(f"Task marked done: {TASK}")
+    elif args.command == "clear":
+        TASK.unlink(missing_ok=True)
+        print(f"Cleared: {TASK}")
+
+
+if __name__ == "__main__":
+    main()

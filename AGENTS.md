@@ -1,7 +1,40 @@
 # Agent Instructions — Sekretaris BEM FEB UKRIDA
 
-> File ini dibaca otomatis oleh Antigravity di setiap sesi.
-> Mirrored di: AGENTS.md, GEMINI.md, CLAUDE.md
+> `AGENTS.md` adalah kontrak kanonis lintas harness. `CLAUDE.md`, `GEMINI.md`, dan instruksi Copilot hanya adapter tipis yang menunjuk ke sini.
+
+## Cross-Harness Session Bootstrap (Canonical)
+
+When Arthur says **"lanjut"**, **"continue"**, or **"kerjakan task aktif"**, do not ask him to find or paste an old prompt.
+
+Before editing:
+
+1. Read `.agent/CURRENT_TASK.md`.
+2. Read `docs/agent/PROJECT_STATE.md`, `docs/agent/DECISIONS.md`, and `docs/agent/OPEN_TASKS.md`.
+3. Inspect the current branch, `git status --short`, and recent commits.
+4. Read only the directives, ADRs, sources, and code relevant to the active task.
+5. Preserve all pre-existing and unrelated dirty changes.
+
+For **"lanjut"**:
+
+- If `.agent/CURRENT_TASK.md` has an objective and status `ready`, `in_progress`, or `paused`, run `./task resume` and continue it.
+- If it is absent, empty, or marked `done`, run `./task next` to select the first `[READY]` item in `docs/agent/OPEN_TASKS.md`.
+- Never select `[BLOCKED]` work or infer a task from stale chats.
+- If no `[READY]` item exists, stop and ask Arthur only for the missing decision, approval, GitHub Issue number, or concise objective.
+
+Use `./task start <issue-number>` to override the queue with a GitHub Issue, or `./task start --title "..."` for a local task. `CURRENT_TASK.md` is local and gitignored; GitHub Issue/PR history and `OPEN_TASKS.md` are the shared task records.
+
+### Execution boundaries
+
+- Make the minimum viable change; do not refactor unrelated files.
+- Use the active harness's native tools. Do not spawn another coding harness unless Arthur asks.
+- Do not auto-run `git pull`, reset, clean, checkout, commit, push, deploy, publish, or migrate production data.
+- Ask before adding dependencies, changing schemas, touching production, changing credentials/permissions, publishing, external messaging, or destructive actions.
+- Run applicable real tests before claiming completion. Never fabricate outputs, approvals, citations, or source contents.
+
+### Completion handoff
+
+Report changed files, exact checks run, results, remaining blockers, and approvals needed. If the objective and checks are complete, run `./task done`; this changes its queue entry from `[READY]` to `[DONE]`. If work remains or a gate blocks progress, run `./task pause` and report the exact blocker. Update `docs/agent/PROJECT_STATE.md` only when project-level state changes; record durable architectural decisions in `docs/agent/DECISIONS.md` or an ADR.
+
 
 ---
 

@@ -44,11 +44,11 @@ terlihat tidak profesional saat diajukan ke Dekan atau Wakil Dekan.
 | **Judul Bab** (I. LATAR BELAKANG) | Times New Roman | 12 pt | **Bold** |
 | **Sub-poin** (A. Tujuan...) | Times New Roman | 12 pt | **Bold** |
 | **Sub-sub-poin** (1. 2. 3.) | Times New Roman | 12 pt | Regular |
-| **Cover / Halaman Judul** | Times New Roman | 14 pt | **Bold** |
+| **Cover / Halaman Judul** | Times New Roman | 12 pt / 14 pt | **Bold** |
 | **Header Tabel** | Times New Roman | 11 pt | **Bold** |
-| **Isi Tabel** | Times New Roman | 11 pt | Regular |
+| **Isi Tabel** | Times New Roman | 10.5 - 11 pt | Regular |
 
-> **Catatan:** Hindari menggunakan Arial, Calibri, atau font lain kecuali ada instruksi khusus dari Dekan.
+> **Catatan:** Hindari menggunakan Arial, Calibri, atau font lain kecuali ada instruksi khusus dari Dekan. Standar cover proposal Google Docs autentik LK FEB menggunakan 12 pt Bold Centered.
 
 ### 2.3 Spasi (Line Spacing)
 | Elemen | Spasi |
@@ -77,6 +77,12 @@ terlihat tidak profesional saat diajukan ke Dekan atau Wakil Dekan.
 | **Header tabel** | Center |
 | **Angka dalam tabel** | Rata kanan |
 | **Teks dalam tabel** | Rata kiri |
+
+### 2.6 Lembar Pengesahan & Tanda Tangan
+- **Format Nama Penandatangan:** Wajib **Bold + Underline** (`<u>Nama Lengkap</u>`).
+- **Tata Letak:** Tabel borderless horizontal yang rapi dan sejajar (tanpa garis kotak).
+- **Identitas Lengkap:** Jabatan di baris pertama, nama bergaris bawah di baris berikutnya, dan NIM (jika mahasiswa) di bawah nama.
+- **Pejabat Baku:** Dekan (`Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A`) dan Wakil Dekan (`Dr. Daniel Widjaja, S.E., M.M., CSCU, CEAP`).
 
 ---
 

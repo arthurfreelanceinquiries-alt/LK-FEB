@@ -1,0 +1,24 @@
+# Current Task
+
+Status: ready
+Issue: none
+Branch: current
+
+## Objective
+
+Replace this line with one concrete outcome, or run `./task start <issue-number>`.
+
+## Scope
+
+- List files or modules that may change.
+
+## Constraints
+
+- Preserve unrelated dirty work.
+- Do not deploy, publish, commit, or push unless Arthur explicitly asks.
+
+## Done When
+
+- Required behavior works.
+- Applicable tests pass with actual output.
+- Remaining blockers and approvals are reported.

@@ -209,12 +209,23 @@ Demikian Proposal Kegiatan [nama acara] FEB ini dibuat agar dapat memberi penjel
 
 Jakarta, [tanggal lengkap, mis: 25 Juli 2026]
 
-Hormat kami,
+Hormat kami,  
+**Badan Eksekutif Mahasiswa**  
+**Fakultas Ekonomi dan Bisnis UKRIDA**
 
-**[Jabatan 1]** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[Jabatan 2]**  
-[Nama] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Nama]
+&nbsp;
 
-**Mengetahui,**
+&nbsp;
 
-**[Nama Dekan/Wakil Dekan]**  
-[Jabatan + Gelar]
+**<u>[Nama Ketua Pelaksana]</u>** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<u>Arthur Reezan</u>**  
+Ketua Pelaksana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ketua BEM FEB UKRIDA  
+([NIM]) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(312023002)
+
+**Mengetahui,**  
+**Dekan Fakultas Ekonomi dan Bisnis UKRIDA**
+
+&nbsp;
+
+&nbsp;
+
+**<u>Dr. Diana Frederica S.E., M.Ak., CFP®., CHCP-A</u>**

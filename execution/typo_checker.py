@@ -52,8 +52,10 @@ TYPO_KAMUS = {
 
     # Kesalahan umum kemahasiswaan
     "ketupel": "Ketua Pelaksana",
-    "Ketupel": "Ketua Pelaksana",
     "mahasiswa baru 2026": "mahasiswa baru angkatan 2026",  # reminder
+    "akutansi": "akuntansi",
+    "kegaitan": "kegiatan",
+    "agustuts": "Agustus",
 }
 
 TYPO_EJAAN_SALAH = {
@@ -67,9 +69,9 @@ TYPO_EJAAN_SALAH = {
 
 # Format rupiah yang SALAH → flagging
 POLA_RUPIAH_SALAH = [
-    (r'\bRp(\d)', "Rp (tanpa titik/spasi setelah Rp) — contoh salah: Rp10.000"),
+    (r'\bRp(\d)', "Rp tanpa titik dan tanpa spasi setelah Rp — contoh salah: Rp10.000"),
     (r'\bRp\.\d', "Rp. tanpa spasi setelah titik — contoh salah: Rp.10.000"),
-    (r'\bRp\s+\d', "Ada spasi berlebih antara Rp dan angka"),
+    (r'\bRp\s+\d', "Rp tanpa titik setelah Rp — contoh salah: Rp 10.000 (seharusnya Rp. 10.000)"),
     (r'\bRp\.\s+[\d,]+,\d{3}', "Menggunakan koma sebagai pemisah ribuan, seharusnya titik"),
 ]
 
@@ -154,6 +156,8 @@ def cek_typo_per_baris(baris: str, no_baris: int) -> list[TypoError]:
 
     # 4. Cek nama organisasi yang salah
     for salah, benar in NAMA_ORG_SALAH.items():
+        if salah == "FEB-UKRIDA" and ("BEM-FEB-UKRIDA" in baris or re.search(r'No\s*:', baris, re.IGNORECASE)):
+            continue
         if salah in baris:
             temuan.append(TypoError(
                 baris=no_baris,

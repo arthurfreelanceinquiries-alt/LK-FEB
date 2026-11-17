@@ -1,6 +1,9 @@
 # 🐞 PORTAL LK-FEB — Bug Log Tracking System
 **Pusat Pencatatan & Monitoring Issue Portal LK-FEB**
 
+> [!IMPORTANT]
+> **Batas Repositori Kanonis (18 November 2026):** Pelacakan bug aktif, bukti verifikasi rilis, dan gate peluncuran produksi (verifikasi pengiriman SMTP & human owner login/PKCE) kini berada di repositori terpisah **`portal-bem-feb-ukrida`** (`https://portal-lk-feb.vercel.app`). Dokumen ini menyimpan riwayat issue awal dari fase sprint di repositori `LK-FEB`.
+
 ---
 
 ## 📌 Status Workflow
@@ -18,11 +21,12 @@
 ---
 
 ## 📊 Summary Dashboard
-- **Total Issues**: 0
+- **Total Historical Issues (LK-FEB Sprint)**: 2
 - **Open**: 0
 - **In Progress**: 0
 - **Fixed**: 0
-- **Closed**: 0
+- **Closed / Verified**: 2
+- **Active Launch Gates (di repo `portal-bem-feb-ukrida`)**: Verifikasi pengiriman SMTP & human owner login/PKCE
 
 ---
 
@@ -30,7 +34,8 @@
 
 | ID | Tanggal | Pelapor | Komponen | Deskripsi Singkat | Severity | Status | Assignee | Fix PR/Commit | Keterangan |
 |---|---|---|---|---|---|---|---|---|---|
-| *Contoh: BUG-001* | *2026-10-14* | *@lk-drafter* | *Database/Supabase* | *Format NIM terpotong saat export* | *High* | *Open* | *@lk-formatter* | *-* | *Menunggu konfirmasi format teks* |
+| BUG-001 | 2026-10-14 | @lk-orchestrator | Frontend (`LeftSidebar.tsx`) | Menu "Kalender Terpadu" mengarah ke `/kalender` (404) | High | Verified & Closed | @lk-frontend | `034c79b` | Diarahkan ke `/rundown`, lulus QA Round 2 |
+| BUG-002 | 2026-10-14 | @lk-orchestrator | Frontend (`LeftSidebar.tsx`) | Menu "Admin Sync" mengarah ke `/admin-sync` (404) | High | Verified & Closed | @lk-frontend | `034c79b` | Diarahkan ke `/admin/sync`, lulus QA Round 2 |
 
 *(Daftar issue akan diisi dan diperbarui secara berkala berdasarkan input temuan dari @lk-drafter dan hasil testing @lk-auditor)*
 
@@ -73,7 +78,8 @@ Jelaskan apa yang salah atau tidak sesuai spesifikasi.
 
 | ID | Komponen | Tanggal Closed | Resolusi Singkat | PR / Commit | Verifikator |
 |---|---|---|---|---|---|
-| - | - | - | Belum ada issue yang ditutup | - | - |
+| BUG-001 | `LeftSidebar.tsx` | 2026-10-14 | Perbaikan route `/kalender` → `/rundown` | `034c79b` | @lk-auditor (`06_Audit_Review/QA_VERIFICATION_ROUND_2_REPORT.md`) |
+| BUG-002 | `LeftSidebar.tsx` | 2026-10-14 | Perbaikan route `/admin-sync` → `/admin/sync` | `034c79b` | @lk-auditor (`06_Audit_Review/QA_VERIFICATION_ROUND_2_REPORT.md`) |
 
 ---
 

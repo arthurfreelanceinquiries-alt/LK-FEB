@@ -48,9 +48,9 @@
 | OMGTC FEB UKRIDA 2026 | Proposal Resmi (.md & .docx), RAB, Audit Review | Sep 2026 | `01_Proposal/OMGTC_2026/` |
 
 ### 🟡 Sedang Berjalan
-| Acara | Dokumen | Status | Lokasi File | Next Milestone / Blocker |
+| Acara / Sistem | Dokumen & Lingkup | Status | Lokasi File | Next Milestone / Blocker |
 |-------|---------|--------|-------------|--------------------------|
-| Portal LK-FEB Modernization & UI/UX Sprint | 22 UI Primitives, Mobile Card Stack, Auth RBAC, OFSPACE 3-Column Spec, QA Audit 2-Lapis | 🟢 Siap Production (Lulus QA 9.2/10) | `Z:/LK-FEB-main/LK-FEB-main/portal-lk` | **Next:** UAT BPH Team & Deployment VPS. Server aktif di http://localhost:3110. |
+| Portal LK-FEB (`portal-bem-feb-ukrida`) | React 19, Vite 8, Supabase Auth + `ENABLE/FORCE RLS`, Tailwind CSS, Playwright, Oxlint | 🟡 Protected Technical Release Active (Member Launch Blocked) | Repo terpisah: `portal-bem-feb-ukrida` (`https://portal-lk-feb.vercel.app`) | **Blocker Launch:** Verifikasi pengiriman SMTP & human owner login/PKCE di repo Portal (Unit 18/18, Browser 370/370, SQL Auth 36/36, API 26/26, Staging/Prod 8/8 PASS). |
 
 ### 🔴 Belum Dimulai
 | Acara | Jenis Dokumen | Target |
@@ -68,10 +68,10 @@
 - **00_SISTEM_BEM/PRD_TIPOGRAFI_MARGIN_TYPO.md** → Standar margin, font, typo
 - **00_SISTEM_BEM/IMPLEMENTATION_PLAN.md** → Rencana implementasi sistem
 - **00_SISTEM_BEM/IMPLEMENTATION_PLAN_TIPOGRAFI.md** → Rencana implementasi tipografi
-- **00_SISTEM_BEM/PORTAL_LK_TECHNICAL.md** → Dokumentasi teknis Portal LK-FEB (Tech Stack, Schema, Env Vars)
-- **00_SISTEM_BEM/PORTAL_BUG_TRACKING.md** → Bug log & issue tracking Portal LK-FEB
-- **00_SISTEM_BEM/PORTAL_CHANGELOG.md** → Roadmap & changelog fase Portal LK-FEB (Phase 0-3)
-- **00_SISTEM_BEM/PORTAL_DATA_MAPPING.md** → Mapping data Excel ke Supabase schema
+- **00_SISTEM_BEM/PORTAL_LK_TECHNICAL.md** → Dokumentasi arsitektur & referensi awal Portal LK-FEB (source aktif di repo terpisah `portal-bem-feb-ukrida`)
+- **00_SISTEM_BEM/PORTAL_BUG_TRACKING.md** → Arsip bug log & issue tracking awal Portal LK-FEB
+- **00_SISTEM_BEM/PORTAL_CHANGELOG.md** → Roadmap & changelog historis Portal LK-FEB
+- **00_SISTEM_BEM/PORTAL_DATA_MAPPING.md** → Mapping data Excel (`bem_feb_data_master.xlsx`) ke Supabase schema
 
 ### B. Templates & Referensi Format
 - **05_Referensi_Template/TEMPLATE_PROPOSAL.md** → Template proposal standar
@@ -161,14 +161,14 @@ Anggota [Sie]   : [Nama] ([NIM])
 - **Cover Resmi:** Judul 12 pt Bold Centered, Tema 12 pt Bold Italic Centered, 1 Logo Besar BEM FEB UKRIDA (~11.5 cm) di tengah, identitas organisasi lengkap di bawah.
 - **Halaman Isi:** Dimulai langsung Halaman 2 dengan `I. LATAR BELAKANG` (TANPA kop surat berulang di dalam proposal multi-halaman).
 - **Format Kepanitiaan:** Tabel borderless 3 kolom (`Jabatan : Nama (NIM)`), rapi sejajar tanpa kotak-kotak kaku/zebra striping.
-- **Format Tabel (Rundown & Anggaran):** Border solid hitam 0.75 pt, header anggaran beraksen soft green `#B3E4A1`, baris Total dan Sisa Saldo Rp. 0 (Balance).
+- **Format Tabel (Rundown & Anggaran):** Border solid hitam 0.75 pt, header anggaran beraksen abu-abu netral `#E0E0E0`, baris Total dan Sisa Saldo Rp. 0 (Balance).
 - **Lembar Pengesahan (TTD):** Nama penandatangan **Bold + Underline** (`<u>Nama Lengkap</u>`), penataan borderless horizontal sejajar.
 
 ### Keputusan Format:
 - Nomor bab: Angka Romawi (I, II, III...)
 - Sub-poin: Huruf kapital (A, B, C...)
 - Sub-sub: Angka (1, 2, 3...)
-- Tanggal: "Jakarta, DD Bulan YYYY"
+- Tanggal: "Jakarta, D Bulan YYYY" (tanpa leading zero, contoh: Jakarta, 13 Agustus 2026)
 - Rupiah: "Rp. X.XXX.XXX" (dengan titik pemisah ribuan)
 
 ---
@@ -188,6 +188,7 @@ Anggota [Sie]   : [Nama] ([NIM])
 || 14 Okt 2026 | Sesi 5 | Update Dashboard: status Portal ke 🟡 In Progress, tambah navigasi ke 4 dokumen teknis baru | Dashboard & dokumentasi sinkron, siap Phase 0 handoff ke @lk-formatter |
 || 14 Okt 2026 | Sesi 6 | Sprint Marathon Portal LK-FEB: Centralize tokens, bangun 22 UI primitives, mobile Card Stack <640px, align NextAuth port 3110, spesifikasi OFSPACE 3-column layout, & verifikasi QA 2-Lapis | Skor QA 9.2/10 (PASS), TypeScript 0 error, build 25+ pages lolos, server live di http://localhost:3110 |
 || 14 Okt 2026 | Sesi 7 | Bug Hunt & Fix: Ditemukan 2 routing errors (404) di LeftSidebar menu links. `/kalender`→`/rundown`, `/admin-sync`→`/admin/sync`. Patch applied, commit 034c79b. Menunggu QA Verification Round 2 dari @lk-auditor. | 🔴 **2 Bugs Fixed** — Menu navigation corrected. Pending: Final audit confirmation. |
+| 18 Nov 2026 | Sesi 8 | Rekonsiliasi standar format dokumen resmi (Margin 4-3-3-3, TNR 12pt, Rp. X.XXX.XXX, TTD bold+underline) & sinkronisasi referensi Portal LK-FEB ke repo kanonis `portal-bem-feb-ukrida` | Standar format, template, `typo_checker.py` (13/13 test PASS), serta dokumentasi status Portal & Dashboard selaras penuh |
 
 ---
 
